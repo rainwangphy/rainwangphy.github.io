@@ -58,3 +58,15 @@ Both blocks must stay — a language with an empty block shows an empty page.
 dark themes.
 
 Images go in `../picture/`, PDFs in `../pdf/`.
+
+## After changing CSS or JS
+
+`style.css` and `main.js` are linked with a `?v=YYYYMMDD` version, because
+GitHub Pages tells browsers to cache assets for 10 minutes and returning
+visitors would otherwise keep the old file. When you edit either asset, bump
+that number in every HTML file:
+
+```bash
+grep -rl 'assets/css/style.css?v=' *.html posts/*.html | \
+  xargs sed -i '' 's/?v=[0-9]\{8\}/?v=20260901/g'
+```
