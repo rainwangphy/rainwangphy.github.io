@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en" data-bilingual>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title data-t-zh="当科研不再依赖于人 · Xinrun Wang">When Research No Longer Runs on People · Xinrun Wang</title>
+<meta name="description" content="AI and the coming transformation of scientific institutions — from the PhD to the paper market." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" />
+<link rel="stylesheet" href="../assets/css/style.css" />
+<script src="../assets/js/main.js"></script>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead__inner">
+    <a class="site-title" href="../index.html">Xinrun Wang</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../publications.html">Publications</a></li>
+      <li><a href="../blog.html" class="is-active">Blog</a></li>
+      <li><a href="../lab.html">DIGA@SMU</a></li>
+      <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span id="theme-icon">☾</span></button></li>
+    </ul>
+  </div>
+</div>
+
+<div class="layout layout--reading">
+  <main class="content">
+
+    <div class="lang-switch" role="group" aria-label="Language / 语言">
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-set-lang="zh" aria-pressed="false">中文</button>
+    </div>
+
+    <article>
+      <header class="post-header">
+        <p class="post-eyebrow" lang="en">Essay · On the institutions of science</p>
+        <p class="post-eyebrow" lang="zh">随笔 · 关于科学的制度</p>
+        <span class="date" lang="en">Aug 23, 2026 · Singapore</span>
+        <span class="date" lang="zh">2026年8月23日 · 新加坡</span>
+        <h1 lang="en">When Research No Longer Runs on People</h1>
+        <h1 lang="zh">当科研不再依赖于人</h1>
+        <p class="post-subtitle" lang="en">AI and the coming transformation of scientific institutions — from the PhD to the paper market.</p>
+        <p class="post-subtitle" lang="zh">AI 与科研制度的范式转移——从博士制度到 paper market。</p>
+        <ul class="tags"><li class="tag" lang="en">essay</li><li class="tag" lang="zh">随笔</li><li class="tag" lang="en">AI for science</li><li class="tag" lang="zh">AI for Science</li><li class="tag" lang="en">research institutions</li><li class="tag" lang="zh">科研制度</li></ul>
+      </header>
+
+      <!-- ============================ English ============================ -->
+      <div class="post-body" lang="en">
+
+        <p class="lede">The debate about AI and science usually gets framed as a question about jobs: will AI replace researchers? I think this framing misses the point. The more interesting question is what happens to the institutions of science—PhD programs, universities, funding agencies, the paper system—when the basic mode of scientific production changes underneath them. This essay traces one causal chain from a simple starting observation to a fairly radical conclusion: research is moving from a system whose basic unit of production is the trained human being toward one whose basic unit is a small number of humans plus AI systems, and when that happens, the entire institutional apparatus we built around scarce human researchers will need to be rethought.</p>
+
+        <h2><span class="no">I</span>Research is, at bottom, a luxury</h2>
+        <p>Start from an uncomfortable observation: research is, in an important sense, a luxury activity.</p>
+        <p>This is not to say research lacks value. It is to say that most basic research carries no direct pressure to deliver revenue, ship a product, or serve an identified customer. Researchers largely study problems <em>they</em> consider important, not problems that a market has clearly articulated and is willing to pay to have solved right now.</p>
+        <p>For research to exist at all as a sustained activity, then, one fundamental question must be answered:</p>
+        <div class="claim"><p><strong>Who pays</strong> for people to explore, over long horizons, with no guarantee of economic return?</p></div>
+        <p>History has offered different answers. Some early researchers were simply rich. Cavendish could devote his life to experiments because he never had to worry about a living. Many mathematicians and natural philosophers depended instead on aristocratic or royal patronage. The forms varied, but the underlying logic was the same: society must first <em>support</em> a class of people—give them money and leisure—before uncertain, long-term, possibly unprofitable inquiry can happen at all.</p>
+
+        <h2><span class="no">II</span>The modern research system is that patronage, institutionalized</h2>
+        <p>The modern era gradually replaced private and aristocratic patronage with universities, governments, and research foundations. Universities give researchers positions, salaries, laboratories, and students; governments supply grant funding; researchers, in return, teach and train the next generation.</p>
+        <p>Out of this emerged a stable loop:</p>
+        <div class="eq">Government and society fund research <span class="arr">→</span> universities organize it <span class="arr">→</span> professors advise PhD students <span class="arr">→</span> PhD students are trained by doing research <span class="arr">→</span> papers become both the output of science and the currency of evaluation.</div>
+        <p>Notice the dual role that doctoral education plays in this loop. On one side, PhD students are being <em>trained</em>: they spend years learning how to do research, acquiring knowledge, skills, taste, and professional credentials. On the other side, PhD students are simultaneously the research system's most important <em>labor force</em>. A very large share of the world's papers, experiments, code, data analysis, and theoretical derivation is actually produced by doctoral students and junior researchers.</p>
+        <p>The whole arrangement rests on a premise so obvious that it is rarely stated out loud:</p>
+        <div class="claim"><p><strong>Research capability lives primarily in people</strong>, and producing a person capable of independent research is very hard.</p></div>
+        <p>Because "someone who can do research" is a scarce resource, it makes sense to train PhD students, hire researchers, and build large research organizations around them. Scarcity is what justifies the pyramid.</p>
+
+        <h2><span class="no">III</span>What AI actually changes is this premise</h2>
+        <p>The genuinely important thing about AI in science is not "AI can help researchers write papers." The deeper question is this:</p>
+        <p class="aside-q">If paper writing, literature review, code implementation, data analysis, mathematical derivation, hypothesis generation—and, increasingly, the substance of research itself—can be done by AI, must research productivity remain attached primarily to human beings?</p>
+        <p>The moment the honest answer becomes "not necessarily," the institutional premise underlying the entire modern research system starts to loosen.</p>
+        <p>Which means the effect of AI on science is probably not simple substitution of machines for workers. It is something more structural:</p>
+        <div class="claim"><p>Research is shifting from a system whose basic unit of production is the individual human researcher to a system whose basic unit is <strong>a small number of humans plus AI systems</strong>.</p></div>
+        <p>Everything that follows in this essay flows from that shift.</p>
+
+        <h2><span class="no">IV</span>First consequence: the meaning of the PhD changes</h2>
+        <p>If AI can take over more and more of the work traditionally done by doctoral students, both sides of the advisor–student relationship start asking new questions.</p>
+        <p>From the advisor's side, training a PhD student is expensive. It takes a student years to come to grips with a field, and the process demands continuous communication, correction, and mentorship—all subject to the frictions of human collaboration: mismatched interests, uneven abilities, differing working styles, and plain communication cost. If a researcher can instead spend unlimited hours in substantive discussion with an AI, and delegate large volumes of concrete research work to it, an uncomfortable question arises naturally:</p>
+        <p class="aside-q">Why do I need to train many people in order to get research done?</p>
+        <p>From the student's side, a mirror-image question appears:</p>
+        <p class="aside-q">If most of the capabilities that the "PhD → research → papers" pathway is supposed to certify can now be supplied by AI at scale, why should I spend five or more years publishing papers to prove I possess them?</p>
+        <p>None of this means the PhD simply disappears. But the <em>reason</em> for the PhD's existence will need to be redefined. Historically, doctoral education was largely in the business of producing research <em>producers</em>. In the future, its central task may be producing people who can do the things AI systems cannot be trusted to do alone: <strong>pose genuinely valuable questions, judge results, orchestrate AI systems, design research pipelines, and take responsibility for scientific claims.</strong></p>
+
+        <h2><span class="no">V</span>Second consequence: the logic of research funding changes</h2>
+        <p>Look at the budget of a typical funded project today and you will find that a large fraction of it is labor. A professor wins a grant and then hires PhD students, postdocs, and research assistants, who carry out most of the actual work.</p>
+        <p>But if AI becomes a primary engine of research production, funders will ask a very practical question:</p>
+        <p class="aside-q">Why should I keep paying for dozens of salaried researchers, when I could fund a small number of exceptional people and equip them with AI, compute, data, and automated experimental infrastructure to do the same work—or more?</p>
+        <p>The structure of research funding then shifts. The old equation was, roughly:</p>
+        <div class="eq">Research money <span class="arr">→</span> people.</div>
+        <p>The emerging equation looks more like:</p>
+        <div class="eq">Research money <span class="arr">→</span> a few principal investigators + compute + AI + data + experimental infrastructure.</div>
+        <p>Governments may well remain the dominant funders of science, but the way money is organized changes, and with it the shape of research organizations. The large professor-and-students pyramid that defines today's labs could flatten into something quite different: <strong>a small number of humans who pose questions, set direction, and marshal resources, with the bulk of concrete research work executed by AI.</strong></p>
+
+        <h2><span class="no">VI</span>Third consequence: a genuine "paper market" may emerge</h2>
+        <p>On top of this, a more radical inference becomes plausible.</p>
+        <div class="claim"><p>If AI drives the marginal cost of producing papers and research results down far enough, research may develop a real market mechanism—call it a <strong>paper market</strong>.</p></div>
+        <p>Under the current system, participating in research effectively requires joining the academy: enter a university, become a researcher, join a lab, invest years in training. In the future, another path may open.</p>
+        <p>Imagine someone with money who is not a professional researcher. They care about a particular problem. They want a conjecture settled, a theory built, perhaps a result associated with their own name. They could simply fund a researcher—or an AI research system—to attack that problem directly.</p>
+        <p>Concretely: one party poses a mathematical problem; another supplies funding; a researcher designs the attack and judges the route; AI carries out the bulk of the search, proof, and experimentation; and the final result is credited to the participants under some new convention for allocating contribution.</p>
+        <p>What this describes is a market that has never clearly existed before: <strong>a market in which problems, capital, research skill, AI compute, and reputation are traded and matched against one another.</strong></p>
+
+        <h2><span class="no">VII</span>This forces a sharper answer to "why does research exist?"</h2>
+        <p>Here we reach the deepest layer of the argument.</p>
+        <p>Today's research system, for all its flaws, grants researchers a remarkable privilege: they may study problems they themselves judge important, without directly answering the questions <em>who needs this research?</em> and <em>who is willing to pay for it?</em> Universities, governments, and foundations answer those questions on the researcher's behalf.</p>
+        <p>But if the cost of research production falls, and more and more actors can fund research directly, science may differentiate into two much more explicit forms.</p>
+        <p>One is research as <strong>market activity</strong>: someone has a concrete problem and is willing to pay to have it solved.</p>
+        <p>The other is research as <strong>explicit altruism, or public-goods production</strong>: a government, a foundation, or an individual judges that a question is worth exploring for society or for human knowledge even without direct economic return, and deliberately shoulders the cost.</p>
+        <p>In other words, the science of the future may be forced to answer, far more explicitly than today:</p>
+        <div class="claim"><p><strong>Who wants this research? Why is it worth doing? Who is willing to bear its cost?</strong></p></div>
+
+        <h2><span class="no">VIII</span>What we are really discussing is not "AI replacing researchers"</h2>
+        <p>The core claim, then, is this:</p>
+        <div class="claim"><p>What AI brings is not straightforward job displacement, but a change in <strong>the relations of production of science</strong>.</p></div>
+        <p>The modern research system of the past two or three centuries was built on one basic fact: research capability is scarce, and it lives primarily in people who have undergone years of training. On that fact, society constructed the doctorate, the university laboratory, the grant system, the paper system, and the academic career. If AI makes research capability something that can be supplied at scale and at low cost, the fact itself changes—and the question stops being "can AI write a paper?" and becomes:</p>
+        <p class="aside-q">When doing research no longer requires large numbers of long-trained humans, how much of the institutional apparatus we built around humans is still necessary?</p>
+        <p>Why does the PhD exist? Why should universities organize research in their current form? Why is funding allocated the way it is? Why are papers authored the way they are? Who owns a research result? And how should credit be divided among the person who funds a problem, the person who poses it, the person who runs the AI, the person who verifies the output, and whatever genuine intellectual contribution lies in between?</p>
+
+        <div class="chain-wrap">
+        <p class="chain-title">The argument, as one causal chain</p>
+        <ol class="chain">
+        <li>Research inherently needs to be supported.</li>
+        <li>Historically: wealthy and aristocratic patronage; later, universities and government funding.</li>
+        <li>The modern system organizes production through professors, PhD students, and papers.</li>
+        <li>The system presumes research capability comes from scarce human researchers.</li>
+        <li>AI begins to decouple research capability from individual humans and scale it.</li>
+        <li>PhD students become less necessary as the primary research labor force.</li>
+        <li>The way advisors organize research changes.</li>
+        <li>Funding shifts from "supporting people" to "a few people + AI + compute."</li>
+        <li>Production costs fall; private capital can participate in research directly.</li>
+        <li>A paper market — a research market — may form.</li>
+        <li>Research enters a new paradigm: more market-driven, more explicitly public-goods-oriented, open to many more participants.</li>
+        </ol>
+        </div>
+
+        <div class="coda">
+        <p>None of this will happen overnight, and much of it may happen unevenly across fields. But the direction of pressure seems clear. The institutions of science were designed for a world in which the scarce resource was the trained human mind. We are entering a world in which that is no longer quite true—and institutions, sooner or later, follow their premises.</p>
+        </div>
+
+        <div class="disclosure">
+          <p><b>How this was written</b>This essay was written by the author in collaboration with AI.
+            The argument and the views in it are the author's own; AI assisted with drafting, editing,
+            and preparing the English and Chinese versions.</p>
+        </div>
+
+      </div>
+
+      <!-- ============================= 中文 ============================== -->
+      <div class="post-body" lang="zh">
+
+        <p class="lede">关于 AI 与科学的讨论，通常被框定为一个就业问题：AI 会不会替代科研人员？我认为这个框架没有抓住重点。更值得追问的是：当科研的基本生产方式发生变化之后，支撑科研的整套制度——博士制度、大学、科研基金、论文体系——会发生什么？这篇文章尝试从一个简单的起点出发，沿着一条因果链走到一个相当激进的结论：科研正在从以经过训练的人为基本生产单位的体系，走向以“少数人 + AI 系统”为基本生产单位的体系；而一旦如此，我们围绕稀缺的人类研究者建立起来的整套制度，都需要被重新思考。</p>
+
+        <h2><span class="no">一</span>科研本质上是一种奢侈的活动</h2>
+        <p>先从一个不太舒服的观察开始：科研在很大程度上是一件奢侈的事情。</p>
+        <p>这并不是说科研没有价值，而是说大多数基础科研并没有直接的盈利、交付或者服务某个明确客户的压力。研究者往往是在研究“自己认为重要的问题”，而不是一个市场已经明确提出、并愿意立刻付费解决的问题。</p>
+        <p>因此，科研要作为一种长期活动存在，就必须先回答一个最基本的问题：</p>
+        <div class="claim"><p><strong>谁来承担</strong>研究者在没有直接经济产出的情况下，进行长期探索的成本？</p></div>
+        <p>历史上，这个问题有过不同的答案。早期，一些研究者本身就足够富有——卡文迪许可以把一生投入实验，因为他从来不需要为生计操心。更多的数学家和自然哲学家则依赖贵族、王公或者国家权力的赞助。形式各异，但底层逻辑相同：社会必须先“养着”一部分人，让他们有钱、有闲，那些不确定的、长期的、未必产生回报的知识探索才有可能发生。</p>
+
+        <h2><span class="no">二</span>现代科研体系，是这种供养机制的制度化</h2>
+        <p>进入现代社会以后，私人和贵族式的赞助逐渐被大学、政府和科研基金所取代。大学给研究者职位、工资、实验室和学生；政府提供科研经费；研究者则同时承担教学和培养下一代的责任。</p>
+        <p>由此形成了一套相对稳定的循环：</p>
+        <div class="eq">政府和社会出资 <span class="arr">→</span> 大学组织科研 <span class="arr">→</span> 教授带博士生 <span class="arr">→</span> 博士生在做科研中接受训练 <span class="arr">→</span> 论文既是科研的产出，也是人才评价的货币。</div>
+        <p>注意博士教育在这个循环中承担的双重角色。一方面，博士生是被培养的人：他们用几年时间学习如何做科研，获得知识、能力、品味和职业资格。另一方面，博士生同时也是整个科研体系最重要的劳动力。世界上相当大比例的论文、实验、代码、数据分析和理论推导，实际上都是由博士生和年轻研究人员完成的。</p>
+        <p>整套安排建立在一个太过显然、以至于很少被明确说出的前提之上：</p>
+        <div class="claim"><p><strong>科研能力主要存在于人身上</strong>，而且培养一个能够独立科研的人非常困难。</p></div>
+        <p>正因为“会做科研的人”是稀缺资源，围绕他们培养博士生、雇佣研究人员、建立庞大的科研组织才是合理的。稀缺性支撑着这座金字塔。</p>
+
+        <h2><span class="no">三</span>AI 真正改变的，正是这个前提</h2>
+        <p>AI 之于科学，真正重要的地方不在于“AI 可以帮科研人员写论文”。更深层的问题是：</p>
+        <p class="aside-q">如果论文写作、文献阅读、代码实现、数据分析、数学推导、假设生成——乃至越来越多科研活动本身——都可以由 AI 完成，那么科研生产力还必须主要依附在人身上吗？</p>
+        <p>一旦诚实的答案开始变成“不一定”，现代科研体系赖以成立的制度前提就开始松动了。</p>
+        <p>这意味着，AI 对科学的影响很可能不是简单的“机器替代工人”，而是某种更结构性的东西：</p>
+        <div class="claim"><p>科研正在从以单个人类研究者为基本生产单位的体系，转向以<strong>“少数人 + AI 系统”</strong>为基本生产单位的体系。</p></div>
+        <p>这篇文章接下来的所有推论，都源自这一转变。</p>
+
+        <h2><span class="no">四</span>第一个后果：博士的意义发生变化</h2>
+        <p>如果 AI 可以承担越来越多过去由博士生完成的工作，导师和学生双方都会开始提出新的问题。</p>
+        <p>从导师的角度看，培养一个博士生成本极高。一个学生需要几年时间才能真正进入一个领域，过程中需要持续的沟通、纠偏和指导，而且始终伴随着人与人合作的摩擦：兴趣不匹配、能力参差、工作方式不同，以及纯粹的沟通成本。如果一个研究者可以转而与 AI 进行不限时长的深入讨论，并把大量具体科研工作交给它完成，一个令人不安的问题就会自然浮现：</p>
+        <p class="aside-q">为什么我一定需要培养很多人，才能完成科研？</p>
+        <p>从学生的角度看，则出现一个镜像问题：</p>
+        <p class="aside-q">如果“读博士—做研究—发论文”这条路径所要认证的大部分能力，如今都可以由 AI 大规模提供，那么我为什么还要花五年甚至更长时间，通过发表论文来证明自己拥有这些能力？</p>
+        <p>这并不意味着博士会简单消失，但博士制度存在的理由需要被重新定义。历史上，博士教育主要是在培养科研的生产者。未来，它的核心任务可能转向培养那些 AI 系统无法被单独信任去做的事情的人——能够<strong>提出真正有价值的问题、判断结果、组织 AI、设计科研系统，并为科学结论承担责任的人。</strong></p>
+
+        <h2><span class="no">五</span>第二个后果：科研经费的分配逻辑改变</h2>
+        <p>看看今天一个典型科研项目的预算，会发现其中很大一部分是人力成本。教授拿到项目以后，招博士生、博士后、研究助理，再由这些人完成大部分实际工作。</p>
+        <p>但如果 AI 成为科研生产的主要引擎之一，资助方会问一个非常现实的问题：</p>
+        <p class="aside-q">为什么我要继续投入大量资金雇佣几十个人，而不是资助少数非常优秀的人，为他们配备 AI、算力、数据和自动化实验设施，去完成同样甚至更多的研究？</p>
+        <p>于是科研经费的结构会发生变化。过去的等式大致是：</p>
+        <div class="eq">科研经费 <span class="arr">→</span> 人力。</div>
+        <p>正在浮现的等式则更接近：</p>
+        <div class="eq">科研经费 <span class="arr">→</span> 少数研究负责人 + 算力 + AI + 数据 + 实验基础设施。</div>
+        <p>政府很可能仍然是科研最重要的出资者，但资金的组织方式改变了，科研组织的形态也随之改变。今天定义实验室形态的“师生金字塔”，可能被压平为一种截然不同的结构：<strong>少数人负责提出问题、判断方向和组织资源，大量具体科研工作由 AI 执行。</strong></p>
+
+        <h2><span class="no">六</span>第三个后果：可能出现真正的 “paper market”</h2>
+        <p>在此基础上，一个更激进的推论变得可信起来：</p>
+        <div class="claim"><p>如果 AI 把产生论文和科研成果的边际成本压得足够低，科研可能发展出一种真正的市场机制——姑且称之为 <strong>paper market</strong>。</p></div>
+        <p>在现行体系下，参与科研实际上意味着必须进入学术界：进大学、成为研究人员、加入实验室、投入多年训练。未来则可能出现另一条路径。</p>
+        <p>设想一个有钱但并非职业科研人员的人。他关心某个具体问题：希望某个猜想被解决，某个理论被建立，甚至希望某项成果与自己的名字产生联系。他可以直接出资，让某个研究者——或者某个 AI research system——去攻克这个问题。</p>
+        <p>具体来说：一方提出一个数学问题；另一方提供资金；研究者负责设计攻击路线并做出判断；AI 承担大量搜索、证明和实验工作；最终成果由各参与方按照某种新的贡献规则共同署名。</p>
+        <p>这描绘的是一个此前从未清晰存在过的市场：<strong>问题、资本、研究能力、AI 算力和声誉，在其中被交易和匹配。</strong></p>
+
+        <h2><span class="no">七</span>这会迫使我们更清晰地回答“科研为什么存在”</h2>
+        <p>这里我们到达论证的最深一层。</p>
+        <p>今天的科研体系尽管有种种缺陷，却给了研究者一项非凡的特权：他们可以研究自己认为重要的问题，而不必直接回答“谁需要这项研究？谁愿意为它付钱？”——大学、政府和基金会替研究者回答了这些问题。</p>
+        <p>但如果科研生产成本下降，越来越多的主体可以直接资助研究，科学可能分化成两种更加明确的形态。</p>
+        <p>一种是作为<strong>市场行为</strong>的科研：有人有一个具体问题，并且愿意付钱解决它。</p>
+        <p>另一种是作为<strong>明确的利他行为或公共品生产</strong>的科研：政府、基金会或个人认为，某个问题即使没有直接经济回报，也值得为社会或人类知识去探索，因此主动承担成本。</p>
+        <p>换句话说，未来的科研可能被迫比今天更明确地回答：</p>
+        <div class="claim"><p><strong>这项研究是谁想要的？为什么值得做？谁愿意承担它的成本？</strong></p></div>
+
+        <h2><span class="no">八</span>我们真正讨论的并不是“AI 替代科研人员”</h2>
+        <p>因此，核心论点是：</p>
+        <div class="claim"><p>AI 带来的不是简单的职业替代，而是<strong>科研生产关系的改变</strong>。</p></div>
+        <p>过去两三百年的现代科研制度，建立在一个基本事实之上：科研能力稀缺，而且主要存在于经过多年训练的人身上。在这个事实之上，社会构造出了博士制度、大学实验室、科研基金、论文制度和学术职业体系。如果 AI 让科研能力变成一种可以大规模、低成本供给的东西，这个事实本身就变了——问题也就不再是“AI 能不能写 paper？”，而是：</p>
+        <p class="aside-q">当做科研不再必须依赖大量经过长期培养的人时，我们围绕“人”建立起来的整套科研制度，还有多少部分是必要的？</p>
+        <p>博士为什么存在？大学为什么要以今天的形式组织科研？科研经费为什么以今天的方式分配？论文为什么以今天的方式署名？谁拥有一项科研成果？出资、提出问题、运行 AI、验证结果，以及其间真正的智力贡献，又应该如何划分？</p>
+
+        <div class="chain-wrap">
+        <p class="chain-title">整个论证：一条因果链</p>
+        <ol class="chain">
+        <li>科研天然需要被供养。</li>
+        <li>历史上表现为富人和贵族的赞助，后来演变为大学与政府资助。</li>
+        <li>现代体系通过教授—博士生—论文组织科研生产。</li>
+        <li>这套制度默认“科研能力来自稀缺的人类研究者”。</li>
+        <li>AI 开始让科研能力脱离单个人类研究者并规模化。</li>
+        <li>博士生作为主要科研劳动力的必要性下降。</li>
+        <li>导师组织科研的方式改变。</li>
+        <li>科研经费从“养人”转向“资助少数人 + AI + 算力”。</li>
+        <li>科研生产成本下降，私人资本得以直接参与科研。</li>
+        <li>可能形成 paper market / research market。</li>
+        <li>科研进入新范式：更市场化、更明确公共品化、更多主体参与。</li>
+        </ol>
+        </div>
+
+        <div class="coda">
+        <p>这一切不会在一夜之间发生，在不同学科之间也很可能进展不一。但压力的方向似乎是清楚的。科学的制度是为一个“经过训练的人类头脑是稀缺资源”的世界设计的。我们正在进入一个这件事不再完全成立的世界——而制度，迟早会跟随它的前提。</p>
+        </div>
+
+        <div class="disclosure">
+          <p><b>关于本文的写作</b>本文由作者与 AI 合作完成。文中的论点与观点由作者提出并负责；
+            AI 参与了起草、润色，以及中英文两个版本的准备。</p>
+        </div>
+
+      </div>
+    </article>
+
+    <nav class="post-nav">
+      <a href="../blog.html"><span lang="en">&larr; All posts</span><span lang="zh">&larr; 全部文章</span></a>
+      <a href="#top"><span lang="en">Back to top</span><span lang="zh">回到顶部</span></a>
+    </nav>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <span>&copy; 2026 Xinrun Wang</span>
+    <span lang="en">EN / 中文 · Same argument, two languages</span>
+    <span lang="zh">中文 / EN · 同一论证，两种语言</span>
+  </div>
+</footer>
+
+</body>
+</html>

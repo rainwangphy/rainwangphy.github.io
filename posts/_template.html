@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light" data-lang="en" data-bilingual>
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>POST TITLE · Xinrun Wang</title>
+<title data-t-zh="中文标题 · Xinrun Wang">POST TITLE · Xinrun Wang</title>
 <meta name="description" content="ONE-SENTENCE SUMMARY OF THE POST." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" />
 <link rel="stylesheet" href="../assets/css/style.css" />
 <script src="../assets/js/main.js"></script>
 </head>
@@ -27,14 +30,22 @@
 <div class="layout layout--reading">
   <main class="content">
 
+    <div class="lang-switch" role="group" aria-label="Language / 语言">
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-set-lang="zh" aria-pressed="false">中文</button>
+    </div>
+
     <article>
       <header class="post-header">
-        <span class="date">MONTH DD, YYYY</span>
-        <h1>POST TITLE</h1>
+        <span class="date" lang="en">MONTH DD, YYYY</span>
+        <span class="date" lang="zh">YYYY年M月D日</span>
+        <h1 lang="en">POST TITLE</h1>
+        <h1 lang="zh">中文标题</h1>
         <ul class="tags"><li class="tag">TAG</li></ul>
       </header>
 
-      <div class="post-body">
+      <!-- ============================ English ============================ -->
+      <div class="post-body" lang="en">
 
         <p>Write the opening paragraph here.</p>
 
@@ -55,11 +66,34 @@
         <p><img src="../picture/SOME_IMAGE.png" alt="Describe the image" /></p>
 
       </div>
+
+      <!-- ============================= 中文 ============================== -->
+      <div class="post-body" lang="zh">
+
+        <p>在这里写开头段落。</p>
+
+        <h2>一个小节</h2>
+        <p>正文。可以用<b>加粗</b>、<i>斜体</i>、<a href="https://example.com">链接</a>，
+          以及 <code>行内代码</code>。</p>
+
+        <ul>
+          <li>一个要点。</li>
+          <li>另一个要点。</li>
+        </ul>
+
+        <blockquote>引用或旁注。</blockquote>
+
+        <pre><code>def hello():
+    print("hello")</code></pre>
+
+        <p><img src="../picture/SOME_IMAGE.png" alt="图片说明" /></p>
+
+      </div>
     </article>
 
     <nav class="post-nav">
-      <a href="../blog.html">&larr; All posts</a>
-      <a href="#top">Back to top</a>
+      <a href="../blog.html"><span lang="en">&larr; All posts</span><span lang="zh">&larr; 全部文章</span></a>
+      <a href="#top"><span lang="en">Back to top</span><span lang="zh">回到顶部</span></a>
     </nav>
 
   </main>

@@ -41,3 +41,62 @@
     });
   });
 })();
+
+// Language switch (English / 中文).
+// A page opts in by putting data-bilingual on <html>; blocks are marked with
+// lang="en" / lang="zh" and hidden by CSS, so it works before/without JS too.
+(function () {
+  var root = document.documentElement;
+  var LANGS = ['en', 'zh'];
+
+  function fromHash() {
+    var h = (location.hash || '').replace('#', '').toLowerCase();
+    return LANGS.indexOf(h) >= 0 ? h : null;
+  }
+
+  function preferred() {
+    var saved = null;
+    try { saved = localStorage.getItem('lang'); } catch (e) {}
+    if (LANGS.indexOf(saved) >= 0) return saved;
+    var nav = (navigator.language || 'en').toLowerCase();
+    return nav.indexOf('zh') === 0 ? 'zh' : 'en';
+  }
+
+  // Swap texts of elements carrying a data-t-zh translation (e.g. <title>).
+  function swapTexts(lang) {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-t-zh]'), function (el) {
+      if (!el.hasAttribute('data-t-en')) el.setAttribute('data-t-en', el.textContent);
+      el.textContent = el.getAttribute(lang === 'zh' ? 'data-t-zh' : 'data-t-en');
+    });
+  }
+
+  function applyLang(lang, withDom) {
+    root.setAttribute('data-lang', lang);
+    root.setAttribute('lang', lang === 'zh' ? 'zh-Hans' : 'en');
+    if (withDom) {
+      swapTexts(lang);
+      Array.prototype.forEach.call(document.querySelectorAll('[data-set-lang]'), function (btn) {
+        btn.setAttribute('aria-pressed', btn.getAttribute('data-set-lang') === lang);
+      });
+    }
+  }
+
+  function choose(lang) {
+    applyLang(lang, true);
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  }
+
+  applyLang(fromHash() || preferred(), false);
+
+  document.addEventListener('DOMContentLoaded', function () {
+    applyLang(root.getAttribute('data-lang'), true);
+    Array.prototype.forEach.call(document.querySelectorAll('[data-set-lang]'), function (btn) {
+      btn.addEventListener('click', function () { choose(btn.getAttribute('data-set-lang')); });
+    });
+  });
+
+  window.addEventListener('hashchange', function () {
+    var h = fromHash();
+    if (h) choose(h);
+  });
+})();
