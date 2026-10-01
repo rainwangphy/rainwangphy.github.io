@@ -405,6 +405,81 @@ a.card:hover {
 }
 a.card:hover h3 { color: var(--accent); }
 
+.card--new { border-color: var(--border-strong); border-top: 3px solid var(--accent); }
+.card__badge {
+  display: inline-block;
+  vertical-align: 1px;
+  margin-left: .3rem;
+  padding: 0 .4rem;
+  border-radius: 5px;
+  font-family: var(--sans);
+  font-size: .68rem;
+  font-weight: 650;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* featured project: one highlighted block near the top of the home page */
+.feature {
+  display: block;
+  position: relative;
+  margin: 1.4rem 0 1.8rem;
+  padding: 1.4rem 1.5rem 1.3rem;
+  border: 1px solid var(--border-strong);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(120% 140% at 100% 0%, var(--accent-soft) 0%, transparent 55%),
+    var(--bg-soft);
+  box-shadow: var(--shadow);
+  color: inherit;
+  transition: border-color .15s, transform .15s;
+}
+.content a.feature { color: inherit; text-decoration: none; }
+a.feature:hover { text-decoration: none; border-color: var(--accent); transform: translateY(-1px); }
+.feature__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: var(--sans);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.feature__badge {
+  padding: .05rem .45rem;
+  border-radius: 5px;
+  background: var(--accent);
+  color: var(--bg);
+  letter-spacing: .04em;
+}
+.content .feature__title {
+  margin: .45rem 0 .5rem;
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.feature__lede { margin: 0 0 .6rem; font-size: .98rem; line-height: 1.65; }
+.feature__motto { margin: 0 0 .9rem; font-style: italic; color: var(--text-muted); font-size: .95rem; }
+.feature__cta {
+  font-family: var(--sans);
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--link);
+}
+.feature__cta i { font-size: .8em; margin-left: .25rem; transition: transform .15s; }
+a.feature:hover .feature__cta { color: var(--link-hover); }
+a.feature:hover .feature__cta i { transform: translateX(3px); }
+@media (max-width: 680px) {
+  .feature { padding: 1.15rem 1.1rem 1.1rem; }
+  .content .feature__title { font-size: 1.35rem; }
+}
+
 /* -------------------------------------------------------------------- news */
 
 .news {
