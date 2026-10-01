@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI for Science · Xinrun Wang</title>
+<meta name="description" content="AI for Science at DIGA@SMU, led by Xinrun Wang — autonomous materials discovery with agents and machine learning, and formally verified scientific computing." />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" />
+<link rel="stylesheet" href="assets/css/style.css?v=20261001b" />
+<script src="assets/js/main.js?v=20261001b"></script>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead__inner">
+    <a class="site-title" href="index.html">Xinrun Wang</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="ai4science.html" class="is-active">AI4Science</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="lab.html">DIGA@SMU</a></li>
+      <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span id="theme-icon">☾</span></button></li>
+    </ul>
+  </div>
+</div>
+
+<div class="layout layout--wide">
+  <main class="content sci">
+
+    <!-- ================================================================ hero -->
+    <header class="sci-hero">
+      <div class="sci-hero__text">
+        <p class="sci-eyebrow">AI for Science · DIGA@SMU</p>
+        <h1 class="sci-hero__title">Agents that discover materials.<br /><em>Proofs</em> that make the results trustworthy.</h1>
+        <p class="sci-hero__lede">
+          We believe the next phase of AI will be decided not in the service sector but in industry and
+          manufacturing — and that AI for science is the pilot. We build agents and models that read the
+          literature, design alloys, and run simulations on their own, and we are now making every number
+          they produce carry a machine-checked proof.
+        </p>
+        <div class="sci-actions">
+          <a class="sci-btn sci-btn--primary" href="#formal-in-silico">Our latest: Formal in Silico <i class="fas fa-arrow-down" aria-hidden="true"></i></a>
+          <a class="sci-btn" href="#discovery">Materials discovery</a>
+        </div>
+      </div>
+      <svg class="sci-hero__art" viewBox="0 0 364 340" aria-hidden="true" focusable="false">
+        <g class="bonds-b"><line x1="111" y1="237" x2="40" y2="300"/><line x1="111" y1="237" x2="90" y2="266"/><line x1="111" y1="237" x2="40" y2="208"/><line x1="111" y1="237" x2="90" y2="174"/><line x1="111" y1="237" x2="132" y2="300"/><line x1="111" y1="237" x2="182" y2="266"/><line x1="111" y1="237" x2="132" y2="208"/><line x1="111" y1="237" x2="182" y2="174"/><line x1="161" y1="203" x2="90" y2="266"/><line x1="161" y1="203" x2="140" y2="232"/><line x1="161" y1="203" x2="90" y2="174"/><line x1="161" y1="203" x2="140" y2="140"/><line x1="161" y1="203" x2="182" y2="266"/><line x1="161" y1="203" x2="232" y2="232"/><line x1="161" y1="203" x2="182" y2="174"/><line x1="161" y1="203" x2="232" y2="140"/><line x1="111" y1="145" x2="40" y2="208"/><line x1="111" y1="145" x2="90" y2="174"/><line x1="111" y1="145" x2="40" y2="116"/><line x1="111" y1="145" x2="90" y2="82"/><line x1="111" y1="145" x2="132" y2="208"/><line x1="111" y1="145" x2="182" y2="174"/><line x1="111" y1="145" x2="132" y2="116"/><line x1="111" y1="145" x2="182" y2="82"/><line x1="161" y1="111" x2="90" y2="174"/><line x1="161" y1="111" x2="140" y2="140"/><line x1="161" y1="111" x2="90" y2="82"/><line x1="161" y1="111" x2="140" y2="48"/><line x1="161" y1="111" x2="182" y2="174"/><line x1="161" y1="111" x2="232" y2="140"/><line x1="161" y1="111" x2="182" y2="82"/><line x1="161" y1="111" x2="232" y2="48"/><line x1="203" y1="237" x2="132" y2="300"/><line x1="203" y1="237" x2="182" y2="266"/><line x1="203" y1="237" x2="132" y2="208"/><line x1="203" y1="237" x2="182" y2="174"/><line x1="203" y1="237" x2="224" y2="300"/><line x1="203" y1="237" x2="274" y2="266"/><line x1="203" y1="237" x2="224" y2="208"/><line x1="203" y1="237" x2="274" y2="174"/><line x1="253" y1="203" x2="182" y2="266"/><line x1="253" y1="203" x2="232" y2="232"/><line x1="253" y1="203" x2="182" y2="174"/><line x1="253" y1="203" x2="232" y2="140"/><line x1="253" y1="203" x2="274" y2="266"/><line x1="253" y1="203" x2="324" y2="232"/><line x1="253" y1="203" x2="274" y2="174"/><line x1="253" y1="203" x2="324" y2="140"/><line x1="203" y1="145" x2="132" y2="208"/><line x1="203" y1="145" x2="182" y2="174"/><line x1="203" y1="145" x2="132" y2="116"/><line x1="203" y1="145" x2="182" y2="82"/><line x1="203" y1="145" x2="224" y2="208"/><line x1="203" y1="145" x2="274" y2="174"/><line x1="203" y1="145" x2="224" y2="116"/><line x1="203" y1="145" x2="274" y2="82"/><line x1="253" y1="111" x2="182" y2="174"/><line x1="253" y1="111" x2="232" y2="140"/><line x1="253" y1="111" x2="182" y2="82"/><line x1="253" y1="111" x2="232" y2="48"/><line x1="253" y1="111" x2="274" y2="174"/><line x1="253" y1="111" x2="324" y2="140"/><line x1="253" y1="111" x2="274" y2="82"/><line x1="253" y1="111" x2="324" y2="48"/></g>
+        <g class="bonds"><line x1="40" y1="300" x2="132" y2="300"/><line x1="40" y1="300" x2="40" y2="208"/><line x1="40" y1="300" x2="90" y2="266"/><line x1="90" y1="266" x2="182" y2="266"/><line x1="90" y1="266" x2="90" y2="174"/><line x1="90" y1="266" x2="140" y2="232"/><line x1="140" y1="232" x2="232" y2="232"/><line x1="140" y1="232" x2="140" y2="140"/><line x1="40" y1="208" x2="132" y2="208"/><line x1="40" y1="208" x2="40" y2="116"/><line x1="40" y1="208" x2="90" y2="174"/><line x1="90" y1="174" x2="182" y2="174"/><line x1="90" y1="174" x2="90" y2="82"/><line x1="90" y1="174" x2="140" y2="140"/><line x1="140" y1="140" x2="232" y2="140"/><line x1="140" y1="140" x2="140" y2="48"/><line x1="40" y1="116" x2="132" y2="116"/><line x1="40" y1="116" x2="90" y2="82"/><line x1="90" y1="82" x2="182" y2="82"/><line x1="90" y1="82" x2="140" y2="48"/><line x1="140" y1="48" x2="232" y2="48"/><line x1="132" y1="300" x2="224" y2="300"/><line x1="132" y1="300" x2="132" y2="208"/><line x1="132" y1="300" x2="182" y2="266"/><line x1="182" y1="266" x2="274" y2="266"/><line x1="182" y1="266" x2="182" y2="174"/><line x1="182" y1="266" x2="232" y2="232"/><line x1="232" y1="232" x2="324" y2="232"/><line x1="232" y1="232" x2="232" y2="140"/><line x1="132" y1="208" x2="224" y2="208"/><line x1="132" y1="208" x2="132" y2="116"/><line x1="132" y1="208" x2="182" y2="174"/><line x1="182" y1="174" x2="274" y2="174"/><line x1="182" y1="174" x2="182" y2="82"/><line x1="182" y1="174" x2="232" y2="140"/><line x1="232" y1="140" x2="324" y2="140"/><line x1="232" y1="140" x2="232" y2="48"/><line x1="132" y1="116" x2="224" y2="116"/><line x1="132" y1="116" x2="182" y2="82"/><line x1="182" y1="82" x2="274" y2="82"/><line x1="182" y1="82" x2="232" y2="48"/><line x1="232" y1="48" x2="324" y2="48"/><line x1="224" y1="300" x2="224" y2="208"/><line x1="224" y1="300" x2="274" y2="266"/><line x1="274" y1="266" x2="274" y2="174"/><line x1="274" y1="266" x2="324" y2="232"/><line x1="324" y1="232" x2="324" y2="140"/><line x1="224" y1="208" x2="224" y2="116"/><line x1="224" y1="208" x2="274" y2="174"/><line x1="274" y1="174" x2="274" y2="82"/><line x1="274" y1="174" x2="324" y2="140"/><line x1="324" y1="140" x2="324" y2="48"/><line x1="224" y1="116" x2="274" y2="82"/><line x1="274" y1="82" x2="324" y2="48"/></g>
+        <g class="atoms"><circle class="a2" cx="140" cy="232" r="9"/><circle class="a1" cx="140" cy="140" r="9"/><circle class="a2" cx="140" cy="48" r="9"/><circle class="a1" cx="232" cy="232" r="9"/><circle class="a2" cx="232" cy="140" r="9"/><circle class="a2" cx="232" cy="48" r="9"/><circle class="a1" cx="324" cy="232" r="9"/><circle class="a2" cx="324" cy="140" r="9"/><circle class="a1" cx="324" cy="48" r="9"/><circle class="a1" cx="161" cy="203" r="12"/><circle class="a1" cx="161" cy="111" r="12"/><circle class="a1" cx="253" cy="203" r="12"/><circle class="a1" cx="253" cy="111" r="12"/><circle class="a2" cx="90" cy="266" r="9"/><circle class="a1" cx="90" cy="174" r="9"/><circle class="a1" cx="90" cy="82" r="9"/><circle class="a2" cx="182" cy="266" r="9"/><circle class="a3" cx="182" cy="174" r="7"/><circle class="a1" cx="182" cy="82" r="9"/><circle class="a2" cx="274" cy="266" r="9"/><circle class="a2" cx="274" cy="174" r="9"/><circle class="a3" cx="274" cy="82" r="7"/><circle class="a1" cx="111" cy="237" r="12"/><circle class="a1" cx="111" cy="145" r="12"/><circle class="a1" cx="203" cy="237" r="12"/><circle class="a1" cx="203" cy="145" r="12"/><circle class="a2" cx="40" cy="300" r="9"/><circle class="a2" cx="40" cy="208" r="9"/><circle class="a3" cx="40" cy="116" r="7"/><circle class="a1" cx="132" cy="300" r="9"/><circle class="a3" cx="132" cy="208" r="7"/><circle class="a2" cx="132" cy="116" r="9"/><circle class="a1" cx="224" cy="300" r="9"/><circle class="a1" cx="224" cy="208" r="9"/><circle class="a2" cx="224" cy="116" r="9"/></g>
+      </svg>
+    </header>
+
+    <ul class="sci-stats">
+      <li>
+        <span class="sci-stats__num">+13.0%</span>
+        <span class="sci-stats__label">strength of a titanium alloy found by AutoMAT, at 8.1% lower density than the aerospace benchmark Ti-185</span>
+      </li>
+      <li>
+        <span class="sci-stats__num">7</span>
+        <span class="sci-stats__label">design iterations for MATAI to reach Ti alloys that outperform the commercial TC4 in experiments</span>
+      </li>
+      <li>
+        <span class="sci-stats__num">94.1%</span>
+        <span class="sci-stats__label">task success of AutoDFT on VASPBench — 34 tasks across 9 DFT calculation types</span>
+      </li>
+      <li>
+        <span class="sci-stats__num">109<small>/118</small></span>
+        <span class="sci-stats__label">claims in the Formal in Silico trust ledger already machine-proved</span>
+      </li>
+    </ul>
+
+    <!-- ========================================================= research map -->
+    <h2 id="map">From Literature to Verified Result</h2>
+    <p class="sci-intro">
+      Our projects cover one loop of scientific work: gather what is known, predict and design, simulate,
+      validate in the lab — and, finally, prove that each step of the computation is right.
+    </p>
+    <ol class="sci-flow">
+      <li>
+        <span class="sci-flow__icon"><i class="fas fa-book-open" aria-hidden="true"></i></span>
+        <span class="sci-flow__step">01 · Knowledge</span>
+        <b>Read the literature</b>
+        <span class="sci-flow__links"><a href="https://smu-diga.github.io/matverse_papers/">MatVerse</a> · <a href="#matseek">MatSeek</a></span>
+      </li>
+      <li>
+        <span class="sci-flow__icon"><i class="fas fa-brain" aria-hidden="true"></i></span>
+        <span class="sci-flow__step">02 · Design</span>
+        <b>Predict &amp; inverse-design</b>
+        <span class="sci-flow__links"><a href="#matai">MATAI</a></span>
+      </li>
+      <li>
+        <span class="sci-flow__icon"><i class="fas fa-atom" aria-hidden="true"></i></span>
+        <span class="sci-flow__step">03 · Simulation</span>
+        <b>Run first-principles calculations</b>
+        <span class="sci-flow__links"><a href="#autodft">AutoDFT</a></span>
+      </li>
+      <li>
+        <span class="sci-flow__icon"><i class="fas fa-flask" aria-hidden="true"></i></span>
+        <span class="sci-flow__step">04 · Discovery</span>
+        <b>Close the loop to the lab</b>
+        <span class="sci-flow__links"><a href="#automat">AutoMAT</a></span>
+      </li>
+      <li class="is-new">
+        <span class="sci-flow__icon"><i class="fas fa-check-double" aria-hidden="true"></i></span>
+        <span class="sci-flow__step">05 · Verification <span class="card__badge">New</span></span>
+        <b>Prove every link</b>
+        <span class="sci-flow__links"><a href="#formal-in-silico">Formal in Silico</a></span>
+      </li>
+    </ol>
+
+    <!-- ===================================================== formal in silico -->
+    <section class="sci-spot" id="formal-in-silico">
+      <div class="sci-spot__text">
+        <p class="feature__eyebrow"><span class="feature__badge">New</span>Our latest progress · Sep 2026</p>
+        <h2 class="sci-spot__title">Formal in Silico</h2>
+        <p class="sci-spot__sub">Rewriting DFT, molecular dynamics and finite elements with formal methods.</p>
+        <p>
+          Materials design, drug screening and structural safety assessment rely more and more on numbers
+          produced by simulation. Today every step from equation to floating-point number is vouched for
+          mainly by testing and experience. We want every step to carry a proof anyone can check —
+          Lean&nbsp;4 and Mathlib for the mathematics, TLA+ and model checking for the parallel software, and a
+          refinement relation between the two.
+        </p>
+        <p class="sci-spot__motto">&ldquo;A result is only as trustworthy as the weakest link.&rdquo;</p>
+        <dl class="sci-ledger">
+          <div><dt>118</dt><dd>claims in the trust ledger</dd></div>
+          <div><dt>109</dt><dd>machine-proved (T3–T4)</dd></div>
+          <div><dt>26</dt><dd>end-to-end at tier T4</dd></div>
+          <div><dt>4</dt><dd>reference codes cross-checked</dd></div>
+        </dl>
+        <p class="sci-tracks">
+          <span>Tracks</span>
+          <a href="https://smu-diga.github.io/formal-in-silico-programme/dft.html">DFT</a>
+          <a href="https://smu-diga.github.io/formal-in-silico-programme/fem.html">FEM</a>
+          <a href="https://smu-diga.github.io/formal-in-silico-programme/md.html">MD</a>
+          <a href="https://smu-diga.github.io/formal-in-silico-programme/calphad.html">CALPHAD</a>
+        </p>
+        <div class="sci-actions">
+          <a class="sci-btn sci-btn--primary" href="https://smu-diga.github.io/formal-in-silico-programme/">Explore the programme <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+          <a class="sci-btn" href="https://smu-diga.github.io/formal-in-silico-programme/progress.html">See the progress</a>
+        </div>
+      </div>
+
+      <figure class="sci-stack" aria-label="The six layers from physical model to floating-point execution, with the proof obligation between each pair">
+        <figcaption>Six layers, one proof obligation between each pair</figcaption>
+        <ol>
+          <li><b>L1</b><span>Physical model</span><small>Kohn–Sham, Newton, linear elasticity</small></li>
+          <li class="sci-stack__ob sci-stack__ob--math">Maths · well-posedness</li>
+          <li><b>L2</b><span>Continuous problem</span><small>variational form in a function space</small></li>
+          <li class="sci-stack__ob sci-stack__ob--math">Maths · discretisation error</li>
+          <li><b>L3</b><span>Discrete problem</span><small>matrices, plane waves, particle coordinates</small></li>
+          <li class="sci-stack__ob sci-stack__ob--math">Maths · algorithmic convergence</li>
+          <li><b>L4</b><span>Abstract algorithm</span><small>SCF, velocity Verlet, conjugate gradients</small></li>
+          <li class="sci-stack__ob sci-stack__ob--tla">TLA+ · refinement</li>
+          <li><b>L5</b><span>Parallel program</span><small>MPI ranks, threads, GPU streams</small></li>
+          <li class="sci-stack__ob sci-stack__ob--fp">Floating point · rounding-error bound</li>
+          <li><b>L6</b><span>Floating-point execution</span><small>the number IEEE 754 hardware returns</small></li>
+        </ol>
+      </figure>
+    </section>
+
+    <!-- ================================================== materials discovery -->
+    <h2 id="discovery">Autonomous Materials Discovery</h2>
+    <p class="sci-intro">
+      Agents and machine learning frameworks that turn design targets into new alloys — with simulations
+      in the loop and experiments as the final judge.
+    </p>
+    <div class="sci-projects">
+      <article class="sci-project" id="automat">
+        <header>
+          <span class="sci-project__icon"><i class="fas fa-flask" aria-hidden="true"></i></span>
+          <span class="sci-project__kind">Hierarchical agent framework · 2025</span>
+        </header>
+        <h3>AutoMAT</h3>
+        <p>From ideation to experimental validation without hand-curated datasets: large language models,
+          automated CALPHAD simulations, residual-learning correction, and AI-guided optimization.</p>
+        <div class="sci-metric"><b>+13.0%</b><span>strength at 8.1% lower density than Ti-185; a high-entropy alloy with 28.2% higher yield strength — alloy discovery from years to weeks</span></div>
+        <footer><a href="https://arxiv.org/abs/2507.16005">Paper <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a></footer>
+      </article>
+      <article class="sci-project" id="matai">
+        <header>
+          <span class="sci-project__icon"><i class="fas fa-brain" aria-hidden="true"></i></span>
+          <span class="sci-project__kind">Generalist ML framework · 2025</span>
+        </header>
+        <h3>MATAI</h3>
+        <p>A curated alloy database, multi-task property predictors with physics-informed inductive biases,
+          and constraint-aware inverse design, joined by an iterative AI–experiment feedback loop.</p>
+        <div class="sci-metric"><b>7 iterations</b><span>to Ti alloys below 4.45 g/cm³, above 1000 MPa and with over 5% ductility, validated against the commercial TC4</span></div>
+        <footer>
+          <a href="https://arxiv.org/abs/2511.10108">Paper <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          <a href="https://www.matai-sg.org/">Platform <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+        </footer>
+      </article>
+      <article class="sci-project" id="autodft">
+        <header>
+          <span class="sci-project__icon"><i class="fas fa-atom" aria-hidden="true"></i></span>
+          <span class="sci-project__kind">Closed-loop multi-agent · 2026</span>
+        </header>
+        <h3>AutoDFT</h3>
+        <p>LLM reasoning in every stage of a DFT calculation: a strategic planner, a just-in-time step
+          planner, and a monitor–recover–reflect cycle that repairs failures and revises the plan.</p>
+        <div class="sci-metric"><b>94.1%</b><span>task-level success on VASPBench, 34 tasks across 9 DFT calculation types</span></div>
+        <footer><a href="https://arxiv.org/abs/2605.26179">Paper <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a></footer>
+      </article>
+      <article class="sci-project" id="matseek">
+        <header>
+          <span class="sci-project__icon"><i class="fas fa-magnifying-glass" aria-hidden="true"></i></span>
+          <span class="sci-project__kind">Knowledge-driven framework · 2026</span>
+        </header>
+        <h3>MatSeek</h3>
+        <p>An automated knowledge-driven framework for materials research.</p>
+        <div class="sci-metric"><b>ICLR 2026</b><span>AI4Mat Workshop</span></div>
+        <footer><a href="https://openreview.net/forum?id=Tc2vIWAfy4">Paper <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a></footer>
+      </article>
+    </div>
+
+    <!-- ============================================================ platforms -->
+    <h2 id="resources">Platforms &amp; Resources</h2>
+    <div class="sci-showcase">
+      <a class="sci-shot" href="https://www.matai-sg.org/">
+        <span class="sci-shot__frame">
+          <span class="sci-shot__bar"><i></i><i></i><i></i><em>matai-sg.org</em></span>
+          <img src="picture/ai4science/matai-platform.jpg" alt="The MATAI platform home page" loading="lazy" width="1152" height="456" />
+        </span>
+        <span class="sci-shot__body">
+          <span class="sci-shot__title">MATAI Platform</span>
+          <span class="sci-shot__text">An all-in-one platform for AI-driven materials design: a holistic alloy database, a foundational
+            property predictor, a generalist designer, and MATAI Chat.</span>
+        </span>
+      </a>
+      <a class="sci-shot" href="https://smu-diga.github.io/matverse_papers/">
+        <span class="sci-shot__frame">
+          <span class="sci-shot__bar"><i></i><i></i><i></i><em>smu-diga.github.io/matverse_papers</em></span>
+          <span class="sci-shot__logo"><img src="picture/ai4science/matverse-logo.png" alt="MatVerse logo" loading="lazy" width="480" height="374" /></span>
+        </span>
+        <span class="sci-shot__body">
+          <span class="sci-shot__title">MatVerse Paper Collection</span>
+          <span class="sci-shot__text">A starting point for researchers new to AI for (materials) science: a regularly updated paper
+            collection, with the machine learning details of each paper.</span>
+        </span>
+      </a>
+    </div>
+
+    <!-- ============================================================= timeline -->
+    <h2 id="timeline">Timeline</h2>
+    <ol class="sci-timeline">
+      <li class="is-new">
+        <span class="sci-timeline__date">Sep 2026</span>
+        <span>Launch of <a href="https://smu-diga.github.io/formal-in-silico-programme/">Formal in Silico</a>,
+          a programme to rebuild DFT, MD, and FEM on formal verification.</span>
+      </li>
+      <li>
+        <span class="sci-timeline__date">2026</span>
+        <span><a href="https://arxiv.org/abs/2605.26179">AutoDFT</a> released, and
+          <a href="https://openreview.net/forum?id=Tc2vIWAfy4">MatSeek</a> presented at the AI4Mat Workshop, ICLR 2026.</span>
+      </li>
+      <li>
+        <span class="sci-timeline__date">Nov 2025</span>
+        <span><a href="https://arxiv.org/abs/2511.10108">MATAI</a> released, a generalist framework for
+          property prediction and inverse design of advanced alloys.</span>
+      </li>
+      <li>
+        <span class="sci-timeline__date">Sep 2025</span>
+        <span><a href="https://smu-diga.github.io/matverse_papers/">MatVerse paper collection</a> launched.</span>
+      </li>
+      <li>
+        <span class="sci-timeline__date">Jul 2025</span>
+        <span><a href="https://arxiv.org/abs/2507.16005">AutoMAT</a> released — our first paper on AI for science.</span>
+      </li>
+    </ol>
+
+    <!-- =============================================================== papers -->
+    <h2 id="papers">Papers</h2>
+    <ul class="pubs">
+      <li>
+        <a class="pub-title" href="https://arxiv.org/abs/2605.26179">AutoDFT: A Closed-Loop Multi-Agent Framework for Autonomous DFT Calculations</a>
+        <span class="pub-venue">arXiv preprint, 2026</span>
+      </li>
+      <li>
+        <a class="pub-title" href="https://openreview.net/forum?id=Tc2vIWAfy4">MatSeek: An Automated Knowledge-Driven Framework for Materials Research</a>
+        <span class="pub-venue">AI4Mat Workshop at the International Conference on Learning Representations (ICLR), 2026</span>
+      </li>
+      <li>
+        <a class="pub-title" href="https://arxiv.org/abs/2511.10108">MATAI: A Generalist Machine Learning Framework for Property Prediction and Inverse Design of Advanced Alloys</a>
+        <span class="pub-venue">arXiv preprint, 2025</span>
+      </li>
+      <li>
+        <a class="pub-title" href="https://arxiv.org/abs/2507.16005">AutoMAT: A Hierarchical Framework for Autonomous Alloy Discovery</a>
+        <span class="pub-venue">arXiv preprint, 2025</span>
+      </li>
+    </ul>
+
+    <!-- ================================================================== cta -->
+    <section class="sci-cta">
+      <div>
+        <h2>Work with us</h2>
+        <p>We are always open to collaborations with materials scientists, physicists, and formal methods
+          researchers, and to students who want to work on AI for science.</p>
+      </div>
+      <div class="sci-actions">
+        <a class="sci-btn sci-btn--primary" href="mailto:xrwang@smu.edu.sg"><i class="fas fa-envelope" aria-hidden="true"></i> Email me</a>
+        <a class="sci-btn" href="lab.html#join">Join DIGA@SMU</a>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <span>&copy; 2026 Xinrun Wang · DIGA@SMU</span>
+    <span>School of Computing and Information Systems, SMU</span>
+  </div>
+</footer>
+
+</body>
+</html>
