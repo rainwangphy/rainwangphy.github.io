@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en" data-bilingual>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title data-t-zh="科学计算中的三重正确性 · Xinrun Wang">Triple Correctness in Scientific Computing · Xinrun Wang</title>
+<meta name="description" content="Why trustworthy simulation needs physical, mathematical, and software correctness—and how separating them makes model error measurable." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" />
+<link rel="stylesheet" href="../assets/css/style.css?v=20261001b" />
+<script src="../assets/js/main.js?v=20261001b"></script>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead__inner">
+    <a class="site-title" href="../index.html">Xinrun Wang</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../publications.html">Publications</a></li>
+      <li><a href="../ai4science.html">AI4Science</a></li>
+      <li><a href="../blog.html" class="is-active">Blog</a></li>
+      <li><a href="../lab.html">DIGA@SMU</a></li>
+      <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span id="theme-icon">☾</span></button></li>
+    </ul>
+  </div>
+</div>
+
+<div class="layout layout--reading">
+  <main class="content">
+
+    <div class="lang-switch" role="group" aria-label="Language / 语言">
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-set-lang="zh" aria-pressed="false">中文</button>
+    </div>
+
+    <article>
+      <header class="post-header">
+        <p class="post-eyebrow" lang="en">Essay · Trust in scientific simulation</p>
+        <p class="post-eyebrow" lang="zh">随笔 · 科学模拟的可信性</p>
+        <span class="date" lang="en">Oct 11, 2026</span>
+        <span class="date" lang="zh">2026年10月11日</span>
+        <h1 lang="en">Triple Correctness in Scientific Computing</h1>
+        <h1 lang="zh">科学计算中的三重正确性</h1>
+        <p class="post-subtitle" lang="en">A model of the world, a mathematical solution, and a running program each need their own evidence.</p>
+        <p class="post-subtitle" lang="zh">模型是否符合现实、数学是否求解正确、程序是否执行无误，需要各自的证据。</p>
+        <ul class="tags"><li class="tag">scientific computing</li><li class="tag">formal verification</li><li class="tag">AI for science</li></ul>
+      </header>
+
+      <!-- ============================ English ============================ -->
+      <div class="post-body" lang="en">
+
+        <p class="lede">A scientific program finishes, its residual falls below the tolerance, and a number appears on the screen. What have we actually learned? We may know that an iteration stopped. We may even know that another program gives the same answer. To turn that number into a claim about a material, a molecule, or a structure, however, we need a much longer chain of reasoning. The <a href="https://smu-diga.github.io/formal-in-silico-programme/">Formal in Silico programme</a> makes this chain explicit through three kinds of correctness: physical, mathematical, and software correctness. I find the distinction useful because it changes both how we establish trust and what we can learn when a calculation disagrees with reality.</p>
+
+        <h2><span class="no">I</span>One number, three questions</h2>
+        <p>Consider a simulation predicting a semiconductor band gap. Three questions sit behind its output. Does the physical model describe the observable being measured? Have we solved that model accurately enough? Does the actual program implement the intended calculation?</p>
+        <table>
+          <thead><tr><th scope="col">Correctness</th><th scope="col">Question</th><th scope="col">Evidence</th></tr></thead>
+          <tbody>
+            <tr><td>Physical</td><td>Does the model describe reality in the claimed range?</td><td>Independent observations, documented conditions, and measurement uncertainty</td></tr>
+            <tr><td>Mathematical</td><td>Are the model equations solved with controlled error?</td><td>Theorems about solutions, discretisation, and iteration</td></tr>
+            <tr><td>Software</td><td>Does execution faithfully realise the algorithm?</td><td>Specifications, implementation proofs, and certified arithmetic</td></tr>
+          </tbody>
+        </table>
+        <p>These questions cannot substitute for one another. Agreement with experiment can conceal compensating errors. Agreement between programs can reflect a shared approximation. A proof that code implements an algorithm says nothing by itself about whether the underlying model describes nature.</p>
+
+        <h2><span class="no">II</span>Physical correctness: the equations face the world</h2>
+        <p>A physical model makes choices before any solver starts. Electronic-structure calculations choose a functional and pseudopotentials; molecular dynamics chooses a force field; continuum mechanics chooses a constitutive law and boundary conditions. Those choices determine what world the computation describes.</p>
+        <p>Solving the resulting equations to more decimal places cannot establish that they describe the world we inhabit. The programme uses the band-gap problem to illustrate this distinction: a carefully converged Kohn–Sham calculation can still disagree with a measured gap. Both the approximation in the model and the relationship between the calculated quantity and the measured observable require scrutiny.</p>
+        <p>Physical correctness is therefore an empirical claim with a stated scope. Validation needs traceable measurements, their conditions and uncertainties, and a clear account of any corrections. Data used to fit a model should be kept separate from data used to validate it. Fixing the comparison protocol beforehand also makes disagreement a result we can report, rather than a reason to quietly adjust the test. These are central requirements of the programme’s <a href="https://smu-diga.github.io/formal-in-silico-programme/#s3">physical validation layer</a>.</p>
+        <div class="claim"><p>A model earns support for particular observables and conditions. <strong>Physical correctness remains open to revision by new evidence.</strong></p></div>
+
+        <h2><span class="no">III</span>Mathematical correctness: convergence needs a destination</h2>
+        <p>Once a model is fixed, we still have to connect a finite calculation to its equations. A differential equation lives in a continuous space; a computer uses a mesh, a basis cutoff, and finitely many iterations. Each transition creates an obligation.</p>
+        <p>Does a solution exist? Is it unique, or are several solutions possible? How far is the discrete solution from the continuous one? How does a stopping tolerance bound the error in the quantity we care about? A small residual becomes informative only through a theorem connecting it to solution error, with the relevant stability assumptions.</p>
+        <p>The distinction becomes especially important in nonlinear problems. A self-consistent iteration can converge to a stationary state without establishing that it is the global energy minimum. A certificate for a unique solution near one candidate must say that it is local. It cannot silently become a certificate for the ground state.</p>
+        <p>Lean can check proofs of these statements against formal definitions. The guarantee follows the theorem’s assumptions and conclusion: a result about a finite basis remains a result about that finite basis until a further bound connects it to the continuous problem. Recording that boundary is part of mathematical correctness.</p>
+
+        <h2><span class="no">IV</span>Software correctness: the theorem must reach execution</h2>
+        <p>A mathematical algorithm does not send MPI messages, migrate atoms between processes, or recover a checkpoint. Its implementation does. An atom duplicated during migration changes the simulated system even when every local force calculation is accurate.</p>
+        <p>The programme assigns different tools to different obligations. TLA+ describes concurrent protocols and their invariants. Frama-C addresses properties of selected C kernels. Proved checkers validate numerical certificates. A refinement argument connects an implementation specification to the abstract algorithm whose mathematics has been analysed.</p>
+        <p>The scope of the evidence matters. Model checking can exhaust the behaviours of a specified finite instance; that alone is not a proof for every process count. Checking an execution trace establishes something about the recorded run. A general refinement theorem supports a broader claim, under its stated assumptions.</p>
+        <p>Arithmetic belongs in this chain too. Floating-point addition is not associative, so parallel reductions can change results when their order changes. Exact rational arithmetic or outward-rounded interval arithmetic can support rigorous enclosures. Reproducibility is useful evidence about execution, while an error bound explains how the result relates to the intended mathematical quantity.</p>
+
+        <h2><span class="no">V</span>Separating errors makes disagreement informative</h2>
+        <p>For comparable observables under matched conditions, the discrepancy between observation and computation can be written schematically as:</p>
+        <pre><code>observation − computed value
+  = measurement error
+  + model error
+  + discretisation error
+  + iterative error
+  + arithmetic error</code></pre>
+        <p>This accounting presupposes that execution implements the specified algorithm. A program that loses an atom may violate that premise altogether. Each numerical term also needs a bound for the observable being compared, not merely for an unrelated internal residual.</p>
+        <p>Here is an illustrative example, not a reported project result. Suppose a certificate encloses a model’s exact prediction in <code>[1.095, 1.105] eV</code>, including the relevant discretisation, iteration, and arithmetic errors. Suppose an experiment reports <code>1.170 eV</code> with statistical uncertainty <code>±0.010 eV</code>. The difference between the experimental central value and the model prediction is then rigorously enclosed in <code>[0.065, 0.075] eV</code>. The experimental uncertainty must still be reported separately, with its statistical meaning.</p>
+        <p>With matched conditions and documented corrections, this separates numerical uncertainty from the remaining evidence about model discrepancy. If the certificate covers only the discrete problem, however, the discretisation error is still unresolved. We cannot attribute the entire discrepancy to the physical model.</p>
+        <div class="claim"><p><strong>Bounding computational error makes a disagreement with experiment more scientifically useful.</strong> It tells us which explanations remain possible.</p></div>
+
+        <h2><span class="no">VI</span>Verify the checker, and expose its assumptions</h2>
+        <p>Proving every line of a large scientific solver is a formidable task. The programme takes another route: let a complex solver propose a result and a certificate, then have a smaller, proved checker establish precisely what follows.</p>
+        <p>The solver can be replaced, optimised, or assisted by AI. Its proposal earns a guarantee only after the checker accepts it under a soundness theorem. This concentrates verification effort on a smaller component, while preserving flexibility in the expensive search for a solution.</p>
+        <p>The guarantee still has dependencies. Formal models, compiler and runtime behaviour, hardware assumptions, and the correspondence between statements in different proof tools must be accounted for. The programme’s <a href="https://smu-diga.github.io/formal-in-silico-programme/#s10">toolchain decisions</a> explicitly acknowledge such connections and remaining assumptions.</p>
+        <p>A trust ledger makes these dependencies inspectable. It records the claim, its evidence, its assumptions, and its status. The programme distinguishes mathematical and software tiers T0–T4 from physical validation grades V0–V3. This lets a strong proof of a computed interval coexist honestly with limited experimental validation. The framework defines the intended standard; individual claims still need to be read at their actual scope and status.</p>
+
+        <h2><span class="no">VII</span>A scientific result should carry its evidence</h2>
+        <p>For AI-assisted science, this architecture suggests a useful division of work. AI can help generate candidate structures, implementations, and proof attempts. Acceptance depends on the appropriate evidence: a checked proof for a mathematical claim, a verified certificate for a numerical enclosure, and independent observations for a claim about reality.</p>
+        <p>A calculation would then deliver more than a number. It would identify the model and conditions, state which quantity was certified and with what error, name the implementation guarantees, and link to the observations against which the model was tested. It would also expose the assumptions and gaps that remain.</p>
+        <div class="coda"><p>The three kinds of correctness let us ask a more precise question of every simulation: what has been established, by which evidence, and within what limits? When the answer is explicit, agreement becomes easier to trust, and disagreement becomes a better guide to what we should investigate next.</p></div>
+
+        <div class="disclosure">
+          <p><b>Source and preparation</b>Based on the <a href="https://smu-diga.github.io/formal-in-silico-programme/">Formal in Silico programme</a>, consulted on 11 October 2026. This essay develops its central framework; it is not a claim that the full programme has been completed. The numerical example is illustrative. AI assisted with drafting and preparing the English and Chinese versions.</p>
+        </div>
+
+      </div>
+
+      <!-- ============================= 中文 ============================== -->
+      <div class="post-body" lang="zh">
+
+        <p class="lede">一个科学计算程序运行结束，残差降到了容差以下，屏幕上出现了一个数字。到这一步，我们究竟知道了什么？我们可能只知道一次迭代停止了，也可能知道另一个程序给出了相同的答案。但要把这个数字变成关于材料、分子或者结构的科学结论，还需要一条更长的论证链。<a href="https://smu-diga.github.io/formal-in-silico-programme/">Formal in Silico 研究计划</a>用三种正确性把这条链条明确地展开：物理正确性、数学正确性和软件正确性。我认为，这一区分的价值在于，它既改变了我们建立信任的方式，也改变了我们能够从计算与现实的分歧中学到什么。</p>
+
+        <h2><span class="no">一</span>一个数字，背后的三个问题</h2>
+        <p>以预测半导体能隙为例。一个输出数字背后，至少有三个问题：物理模型描述的是实验测量的那个量吗？我们把模型求解得足够准确了吗？实际运行的程序执行的是我们打算执行的计算吗？</p>
+        <table>
+          <thead><tr><th scope="col">正确性</th><th scope="col">要回答的问题</th><th scope="col">需要的证据</th></tr></thead>
+          <tbody>
+            <tr><td>物理正确性</td><td>模型在所声称的范围内符合现实吗？</td><td>独立观测、明确的测量条件与测量不确定性</td></tr>
+            <tr><td>数学正确性</td><td>是否在误差受控的条件下求解了模型方程？</td><td>关于解、离散化与迭代的定理</td></tr>
+            <tr><td>软件正确性</td><td>程序执行是否忠实实现了算法？</td><td>形式化规格、实现证明与经过认证的算术</td></tr>
+          </tbody>
+        </table>
+        <p>这三个问题不能互相代替。与实验吻合，可能掩盖了彼此抵消的错误；两个程序结果一致，可能只是使用了同一种近似；证明代码正确实现了算法，本身也不能说明算法背后的物理模型符合自然。</p>
+
+        <h2><span class="no">二</span>物理正确性：让方程接受现实的检验</h2>
+        <p>在求解器开始工作之前，物理模型已经做出了很多选择。电子结构计算选择泛函与赝势，分子动力学选择力场，连续介质力学选择本构关系与边界条件。这些选择决定了计算所描述的世界。</p>
+        <p>把方程多算几位小数，并不能确立它们描述的就是我们所处的现实。研究计划用能隙问题说明了这一区别：一个经过充分数值收敛的 Kohn–Sham 计算，仍然可能与测量得到的能隙不一致。模型中采用的近似，以及所计算的量与实验可观测量之间的关系，都需要被审视。</p>
+        <p>因此，物理正确性是一种具有明确适用范围的经验判断。验证需要可追溯的测量数据、测量条件与不确定性，也需要交代比较之前做过哪些修正。用于拟合模型的数据，应当与验证模型的数据分开；在比较之前固定检验方案，则让“不吻合”也成为可以报告的研究结果，而不是悄悄修改检验标准的理由。这些要求构成了该计划<a href="https://smu-diga.github.io/formal-in-silico-programme/#s3">物理验证层</a>的重要内容。</p>
+        <div class="claim"><p>一个模型获得的支持，总是针对特定的可观测量与条件。<strong>物理正确性的判断，始终允许新的证据来修正。</strong></p></div>
+
+        <h2><span class="no">三</span>数学正确性：收敛需要有一个明确的终点</h2>
+        <p>固定了模型，仍然需要把有限的计算与模型方程连接起来。微分方程存在于连续空间中，计算机却使用有限的网格、截断的基组和有限次迭代。每一次转换，都产生了需要完成的论证。</p>
+        <p>解存在吗？它是唯一的，还是可能有多个？离散解与连续解之间相差多少？停止迭代时使用的容差，怎样约束我们真正关心的物理量的误差？一个很小的残差，只有通过连接残差与解误差的定理，并满足相关的稳定性条件，才能提供明确的保证。</p>
+        <p>在非线性问题中，这一点尤其重要。自洽迭代收敛到一个驻态，并不意味着已经找到全局能量最低的状态。如果一个证书只保证某个候选解附近存在唯一的解，就必须明确地说这是局部结论，不能悄悄把它变成对基态的认证。</p>
+        <p>Lean 可以依据形式化定义，检查这些命题的证明。保证的范围取决于定理的假设与结论：关于有限基组的结果，仍然只是关于这个有限基组的结果；只有再补上与连续问题之间的误差界，才能跨越这一层。明确记录这条边界，本身就是数学正确性的一部分。</p>
+
+        <h2><span class="no">四</span>软件正确性：让定理真正抵达程序的执行</h2>
+        <p>数学算法本身不会发送 MPI 消息，不会把原子从一个进程迁移到另一个进程，也不会恢复检查点；实际程序会。即使每一次局部力的计算都准确无误，迁移过程中重复了一个原子，也已经改变了被模拟的系统。</p>
+        <p>这项研究计划为不同的证明义务分配了不同工具。TLA+ 描述并发协议及其不变量，Frama-C 处理特定 C 语言内核的性质，经过证明的检查器验证数值证书。精化论证则把实现的规格，与已经接受数学分析的抽象算法连接起来。</p>
+        <p>证据的覆盖范围同样需要说明。模型检查可以穷尽某个指定有限实例的行为，但这本身并不是关于任意进程数量的证明；检查执行轨迹，支持的是关于所记录运行的结论；一般性的精化定理，才能在其假设之下支持更广的保证。</p>
+        <p>算术也属于这条链条。浮点加法不满足结合律，因此，并行归约的顺序变化可能改变结果。精确有理数算术或向外舍入的区间算术，可以支持严格的数值包围。可复现性为程序执行提供了有用证据，而误差界进一步说明，这个结果与预期的数学量之间是什么关系。</p>
+
+        <h2><span class="no">五</span>把误差分开，分歧才有解释力</h2>
+        <p>对于在相匹配的条件下具有可比性的观测量，观测与计算之间的差异，可以示意性地写成：</p>
+        <pre><code>观测值 − 计算值
+  = 测量误差
+  + 模型误差
+  + 离散化误差
+  + 迭代误差
+  + 算术误差</code></pre>
+        <p>这个分解有一个前提：程序确实实现了规定的算法。一个丢失原子的程序，可能直接破坏这个前提。每一项数值误差，也必须落实到正在比较的观测量上，而不能只给出某个无关的内部残差。</p>
+        <p>来看一个假设的例子，以下数字并非项目报告的结果。假设一个证书把模型的精确预测包围在 <code>[1.095, 1.105] eV</code> 内，并且已经覆盖相关的离散化、迭代与算术误差。实验报告的中心值是 <code>1.170 eV</code>，统计不确定性为 <code>±0.010 eV</code>。那么，实验中心值减去模型预测的差，可以被严格包围在 <code>[0.065, 0.075] eV</code> 内。实验不确定性仍然需要单独报告，并说明其统计含义。</p>
+        <p>在条件匹配、修正有据可查的前提下，这就把数值不确定性，与剩余的模型偏差证据区分开来。不过，如果证书只覆盖离散问题，离散化误差就仍然没有解决，我们也就不能把全部分歧都归因于物理模型。</p>
+        <div class="claim"><p><strong>为计算误差建立严格边界，会让与实验的分歧更有科学价值。</strong>它帮助我们判断，还有哪些解释是可能的。</p></div>
+
+        <h2><span class="no">六</span>验证检查器，并公开它的假设</h2>
+        <p>逐行证明一个大型科学计算求解器，是一项极其庞大的任务。这项计划选择了另一条路径：让复杂的求解器提出结果并生成证书，再由一个更小、经过证明的检查器，确立究竟能够从中得出什么结论。</p>
+        <p>求解器可以被替换、被优化，也可以得到 AI 的帮助。只有当检查器依据可靠性定理接受了它的提议，结果才获得相应的保证。这样，验证工作可以集中到较小的组件上，而寻找解的昂贵过程仍然保留实现上的灵活性。</p>
+        <p>这种保证仍然有依赖：形式化模型、编译器与运行时的行为、硬件假设，以及不同证明工具之间命题的对应关系，都需要交代。研究计划在<a href="https://smu-diga.github.io/formal-in-silico-programme/#s10">工具链的设计决策</a>中，明确承认了这些连接及其剩余假设。</p>
+        <p>信任账本让这些依赖可以被检查。它记录命题、证据、假设和当前状态。计划把数学与软件的 T0–T4 层级，同物理验证的 V0–V3 等级分开，使一个具有强证明支持的计算区间，可以诚实地与有限的实验验证并存。框架定义的是希望达到的标准，每一项具体成果仍然需要按照自身实际覆盖的范围与状态来理解。</p>
+
+        <h2><span class="no">七</span>科学结果应当携带自己的证据</h2>
+        <p>对于 AI 参与的科学研究，这种架构提供了一种有用的分工。AI 可以帮助生成候选结构、程序实现和证明尝试；是否接受这些产出，则取决于相应的证据：数学命题需要经过检查的证明，数值包围需要得到验证的证书，关于现实的判断需要独立观测。</p>
+        <p>这样，一次计算交付的就不只是一个数字。它还应当说明使用了什么模型、针对什么条件、认证了哪个量、误差是多少、程序实现具有什么保证，以及模型接受过哪些观测的检验。尚未消除的假设与缺口，也应当一并呈现。</p>
+        <div class="coda"><p>三重正确性让我们能够对每一次模拟提出更精确的问题：究竟确立了什么结论，依据什么证据，又受到哪些边界的限制？当答案被清楚地写出来，吻合就更值得信任，分歧也更能指引我们接下来应该研究什么。</p></div>
+
+        <div class="disclosure">
+          <p><b>来源与写作说明</b>本文依据 <a href="https://smu-diga.github.io/formal-in-silico-programme/">Formal in Silico 研究计划</a>撰写，网页查阅日期为 2026 年 10 月 11 日。文章围绕其核心框架展开论述，并不表示整个计划已经完成。文中的数值例子仅用于说明。AI 参与了起草与中英文两个版本的准备。</p>
+        </div>
+
+      </div>
+    </article>
+
+    <nav class="post-nav">
+      <a href="../blog.html"><span lang="en">&larr; All posts</span><span lang="zh">&larr; 全部文章</span></a>
+      <a href="#top"><span lang="en">Back to top</span><span lang="zh">回到顶部</span></a>
+    </nav>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <span>&copy; 2026 Xinrun Wang</span>
+    <span>School of Computing and Information Systems, SMU</span>
+  </div>
+</footer>
+
+</body>
+</html>
