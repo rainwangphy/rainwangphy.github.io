@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en" data-bilingual>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title data-t-zh="When to Delegate? 何时委派？ · Xinrun Wang">When to Delegate? · Xinrun Wang</title>
+<meta name="description" content="What makes reasoning reusable, and how much of algorithm discovery can itself be learned? A research perspective on the delegability frontier." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" />
+<link rel="stylesheet" href="../assets/css/style.css?v=20261001b" />
+<script src="../assets/js/main.js?v=20261001b"></script>
+</head>
+<body id="top">
+
+<div class="masthead">
+  <div class="masthead__inner">
+    <a class="site-title" href="../index.html">Xinrun Wang</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../publications.html">Publications</a></li>
+      <li><a href="../ai4science.html">AI4Science</a></li>
+      <li><a href="../blog.html" class="is-active">Not Intelligent</a></li>
+      <li><a href="../lab.html">DIGA@SMU</a></li>
+      <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span id="theme-icon">☾</span></button></li>
+    </ul>
+  </div>
+</div>
+
+<div class="layout layout--reading">
+  <main class="content">
+
+    <div class="lang-switch" role="group" aria-label="Language / 语言">
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-set-lang="zh" aria-pressed="false">中文</button>
+    </div>
+
+    <article>
+      <header class="post-header">
+        <p class="post-eyebrow" lang="en">Research perspective · Delegability frontier</p>
+        <p class="post-eyebrow" lang="zh">研究随笔 · Delegation 的能力边界</p>
+        <span class="date" lang="en">Nov 3, 2026</span>
+        <span class="date" lang="zh">2026年11月3日</span>
+        <h1 lang="en">When to Delegate?</h1>
+        <h1 lang="zh">When to Delegate? 何时委派？</h1>
+        <p class="post-subtitle" lang="en">From reusable algorithms to learned delegation: when can we compile reasoning, and when must we discover something new?</p>
+        <p class="post-subtitle" lang="zh">从可复用算法到学习式委派：什么时候可以编译推理，什么时候仍然需要发现新的解法？</p>
+        <ul class="tags"><li class="tag">language models</li><li class="tag">delegation</li><li class="tag">program synthesis</li></ul>
+      </header>
+
+      <!-- ============================ English ============================ -->
+      <div class="post-body" lang="en">
+
+        <p class="lede">Suppose a strong language model solves a problem today, then encounters a thousand more instances governed by the same rules tomorrow. Should it reason through every instance again? Or should the first encounter produce something that can do the work from then on? This is the version of delegation that interests me: turning an expensive act of reasoning into a reusable computational procedure.</p>
+        <p>A delegate, in this essay, is an executable program or workflow that handles a defined family of inputs. Delegation can mean many things, including handing work to another agent. Here I focus on a narrower research question: when can a strong language model’s online reasoning be compiled into a procedure that is accurate, reusable, and cheaper to run?</p>
+        <div class="claim"><p><strong>The central question is what makes a task delegable, and how much of the work of discovering its algorithm can itself be amortized.</strong></p></div>
+        <p>I think this leads to a useful research agenda: a <em>delegability frontier</em>. The frontier would describe which tasks a particular system can reliably delegate under specified resource and accuracy constraints. The framework below is a set of hypotheses and proposed experiments, rather than a report of established results.</p>
+
+        <h2><span class="no">I</span>Task difficulty is not delegation difficulty</h2>
+        <p>Consider finding a shortest path in a large graph with nonnegative edge weights. An instance may require substantial computation, but the rule for solving it is explicit and reusable. Once an appropriate implementation is available, new graphs do not require a language model to rediscover the algorithm. The computation remains; repeated algorithm discovery disappears.</p>
+        <p>Now consider a short instruction asking us to classify a few messages under a newly invented policy. The inputs are small, but the policy may contain ambiguous concepts or exceptions that a few examples do not resolve. Constructing a reliable delegate may be harder than the apparent size of the task suggests. Some of that difficulty comes from discovering a procedure; some comes from an underspecified task that needs clarification.</p>
+        <p>These examples separate three costs: understanding the task, finding a solution procedure, and executing that procedure. A task can be expensive to execute while being easy to delegate. It can also be cheap to answer once while being difficult to turn into a dependable reusable program.</p>
+        <p>This distinction also limits the promise. Compilation does not make an intrinsically expensive computation cheap. It can remove repeated language-model reasoning around that computation, provided the resulting program meets the required accuracy and resource budget.</p>
+
+        <h2><span class="no">II</span>A solution can exist without being easy to discover</h2>
+        <p>There are two different capability boundaries here. <strong>Existence</strong> asks whether a compact, accurate, efficient delegate exists in the allowed program space. <strong>Learnability</strong> asks whether a smaller model can find or generate such a delegate from the available task description and examples, within a feasible synthesis budget.</p>
+        <p>A short program may encode an insight that is difficult to discover. Conversely, a compiler may generate a long but adequate program by composing familiar components. Program length alone therefore cannot tell us how hard synthesis will be.</p>
+        <p>Learnability also depends on the evidence supplied. Several programs may agree on all the examples and disagree on the next input. If the specification does not distinguish them, more search alone cannot establish which one was intended. The quality of the task description belongs in the experimental design.</p>
+        <p>This gives delegation two potential failure modes. The permitted program space may contain no satisfactory delegate, or the synthesis system may fail to discover one that does exist. Evaluations should try to distinguish these cases. Failure to generate a program is not evidence that no suitable program exists.</p>
+
+        <h2><span class="no">III</span>Four dimensions of delegability</h2>
+        <p>I would characterize a task along four dimensions. Each is relative to the available tools, representations, and budget.</p>
+        <table>
+          <thead><tr><th scope="col">Dimension</th><th scope="col">Question</th></tr></thead>
+          <tbody>
+            <tr><td>Compressibility</td><td>Can the required behavior be expressed as a compact, reusable program?</td></tr>
+            <tr><td>Synthesizability</td><td>Can that program be generated from a specification and a small set of examples?</td></tr>
+            <tr><td>Verifiability</td><td>Can we establish its correctness, or estimate its error, at an acceptable cost?</td></tr>
+            <tr><td>Distribution stability</td><td>Does it remain valid across the intended changes in inputs, and can changes that require revision be identified?</td></tr>
+          </tbody>
+        </table>
+        <p>The first two dimensions capture the distinction between an available solution and a discoverable one. Compressibility is only part of existence: a concise program must also satisfy execution and accuracy constraints. Verifiability determines how confidently we can accept a candidate. Stability determines how long the investment in it remains useful.</p>
+        <p>Passing a few tests is evidence about those tests, not a general correctness guarantee. Some tasks admit exact checkers or formal proofs; others require statistical evaluation on independent inputs. The strength and scope of the acceptance evidence should travel with the delegate.</p>
+        <p>Stability also needs a precise interpretation. New inputs under unchanged rules may be covered by the same program. Changed rules may require a new program, unless the existing delegate already accepts those rules as parameters. We should not count unannounced changes in meaning as ordinary input generalization.</p>
+
+        <h2><span class="no">IV</span>Novelty may locate the frontier more precisely</h2>
+        <p><strong>Instance novelty</strong> changes the input while preserving the solving rule: another graph, another list, another record under the same schema. <strong>Task novelty</strong> changes the rule, abstraction, or solution method: a different objective, a new constraint, or a previously unavailable operation.</p>
+        <p>My hypothesis is that task novelty will often explain delegation failures better than raw instance difficulty. A fixed delegate can handle many unfamiliar instances if its assumptions hold. A small change in the task’s meaning can invalidate it immediately.</p>
+        <p>But novelty is relative to the system’s <strong>abstraction library</strong>. A task that once required inventing an algorithm may become routine after the system acquires a suitable solver, parser, or reusable operation. With a general solver, a new constraint might be merely another input; without one, it might require a new implementation.</p>
+        <p>The frontier should therefore move as the library improves. To study that movement, we need to record which primitives the system has and which compositions it has encountered. Otherwise, an apparent advance in reasoning may simply reflect access to a previously missing component. Both are useful, but they answer different research questions.</p>
+
+        <h2><span class="no">V</span>Learning to produce delegates</h2>
+        <p>The direction I find most promising is <strong>learned delegation</strong>. A strong language model generates candidate task–program pairs. Those candidates are checked and filtered, then used to train a smaller <em>neural compiler</em>: a model that maps task specifications and examples to executable delegates.</p>
+        <ol>
+          <li><strong>Strong LM:</strong> propose algorithms and programs for a collection of tasks.</li>
+          <li><strong>Validation:</strong> check candidates against specifications and independent cases; retain the evidence and limitations.</li>
+          <li><strong>Small neural compiler:</strong> learn to synthesize programs for new task descriptions.</li>
+          <li><strong>Delegate:</strong> execute repeated instances after the generated program passes the acceptance procedure.</li>
+        </ol>
+        <p>This creates two levels of amortization. At the <strong>instance level</strong>, a program replaces repeated reasoning on the same task. At the <strong>task level</strong>, a learned compiler reuses experience from discovering programs across tasks. Its success would mean that part of algorithm discovery can be learned in a form that is cheaper to invoke.</p>
+        <p>The challenging test is whether the compiler can generate programs for new task structures. Success on paraphrased specifications or familiar templates would establish a narrower capability. A convincing evaluation needs held-out compositions, rule systems, and task families, with clear controls on what was available during training.</p>
+        <p>A practical system could use the compiler when it produces an acceptable candidate and ask the strong model for help when synthesis or validation fails. That fallback is part of the system’s cost and capability. It should be measured explicitly rather than hidden inside the delegate’s reported success rate.</p>
+
+        <h2><span class="no">VI</span>When does delegation pay?</h2>
+        <p>Even a correct delegate can be a poor investment for a task that appears only once. A simple cost model makes the tradeoff visible. Let <code>G</code> be the cost of generating and validating a delegate, <code>E</code> its execution cost per instance, <code>L</code> the cost of direct strong-model reasoning per instance, and <code>N</code> the number of instances before the delegate needs revision.</p>
+        <pre><code>Direct reasoning:  N × L
+Delegation:        G + N × E
+
+Delegation saves cost when:
+N × (L − E) &gt; G</code></pre>
+        <p>These quantities must use comparable units and refer to systems that meet the same accuracy requirement. If execution is cheaper than direct reasoning, enough reuse can repay the setup cost. Frequent rule changes reduce the useful reuse window. Verification, maintenance, and fallback calls can raise the actual cost beyond this simplified expression.</p>
+        <p>For a learned compiler, the training and data-generation costs must also be accounted for across the tasks it serves. Lower synthesis cost at deployment does not, by itself, establish lower total cost. Monetary cost, compute, and latency should be reported separately when they lead to different conclusions.</p>
+
+        <h2><span class="no">VII</span>Measuring the delegability frontier</h2>
+        <p>A concrete starting point would be a controlled suite of task families with known reference programs. We could vary program structure and execution cost, the amount of information in the specification, and novelty relative to the training tasks and abstraction library. These factors interact, so the aim should be to disentangle them as far as the task construction permits.</p>
+        <p>Program length or nesting depth can serve as structural controls. Synthesis difficulty should also be measured through the search budget and success rate of specified synthesizers; it should not be assumed to follow directly from program length. Reference programs establish existence within the tested setting, allowing synthesis failures to be studied separately.</p>
+        <p>The central comparison would have three arms:</p>
+        <ul>
+          <li><strong>Strong LM direct:</strong> the strong model answers each instance.</li>
+          <li><strong>LM-generated delegate:</strong> the strong model synthesizes a program that is reused across instances.</li>
+          <li><strong>Learned delegate:</strong> the smaller neural compiler synthesizes the reusable program.</li>
+        </ul>
+        <p>Each system should receive the same task information, with tool access and resource budgets recorded. Evaluation should separate new instances of known tasks, new combinations of known components, and tasks requiring held-out rules or abstractions. Inputs used to select or repair programs must remain separate from the final evaluation set.</p>
+        <p>We should report accuracy alongside generation and validation cost, execution cost, failure and fallback rates, and generalization across tasks. Varying the reuse count would reveal when each approach becomes economical. Comparing several abstraction libraries would show how much of the frontier moves through better components.</p>
+        <p>The outcome should be a family of accuracy–cost frontiers under explicit conditions. Evidence against the hypothesis matters too: if performance collapses on new compositions, if validation consumes the savings, or if strong-model fallback remains frequent, then algorithm discovery has been amortized only within a limited range.</p>
+
+        <h2><span class="no">VIII</span>What remains for the strong model?</h2>
+        <p>The research hypothesis is that a strong language model’s distinctive value may increasingly lie in discovering new algorithms and abstractions. Once a procedure is explicit and dependable, much of its repeated execution can move to cheaper machinery. A learned compiler could move part of the discovery work there as well.</p>
+        <p>That remains conditional. Some tasks resist a compact executable specification; some change too quickly to repay synthesis; some require a new abstraction that the compiler has not learned. Strong models may still be useful in those cases, though their involvement does not automatically resolve ambiguity or establish correctness.</p>
+        <div class="coda"><p>When to delegate? When a reusable procedure can be found, its reliability can be established for the intended setting, and its expected reuse justifies the full cost. The deeper question is how far we can extend that region by teaching systems to discover procedures themselves. Mapping that boundary would tell us where strong-model reasoning is still needed, and where it can become a reusable computational asset.</p></div>
+        <div class="disclosure"><p><b>About this essay</b>This essay develops a research perspective from the author’s notes on the delegability frontier. The examples and experimental design are illustrative; no benchmark results are claimed. AI assisted with drafting and preparing the English and Chinese versions.</p></div>
+
+      </div>
+
+      <!-- ============================= 中文 ============================== -->
+      <div class="post-body" lang="zh">
+
+        <p class="lede">假设一个强语言模型今天解决了一个问题，明天又遇到一千个遵循同样规则的新实例。它应该逐个重新推理，还是应该在第一次求解之后，留下一个能够持续完成这项工作的程序？这正是我关心的 delegation：把一次昂贵的推理，转化为可以复用的计算过程。</p>
+        <p>本文把 delegate 称为“委派程序”：它是处理某一明确输入家族的可执行程序或工作流。Delegation 可以有更广的含义，例如把工作交给另一个智能体；这里关注一个更具体的研究问题：什么时候可以把强语言模型的在线推理，编译成准确、可复用、执行成本更低的过程？</p>
+        <div class="claim"><p><strong>核心问题是：什么决定了一个任务能否被委派？而发现求解算法这件事本身，又能在多大程度上被摊销？</strong></p></div>
+        <p>我认为，可以围绕这个问题建立一条 <em>Delegability Frontier</em>，即“可委派性边界”：在给定资源与准确率要求下，一个具体系统能够可靠地委派哪些任务。下面提出的是一组研究假设与实验思路，而不是已经得到验证的结论。</p>
+
+        <h2><span class="no">一</span>任务难度，不等于委派难度</h2>
+        <p>考虑在一个边权非负的大图中寻找最短路径。某个实例可能需要大量计算，但求解规则是明确且可复用的。只要有了合适的实现，遇到新的图，就不必让语言模型重新发现算法。计算仍然存在，重复发现算法的过程却可以省去。</p>
+        <p>再考虑一个很短的任务：按照一套刚刚提出的规则，对几条消息进行分类。输入虽然很小，规则却可能包含模糊概念，或者少量示例无法说明的例外。构造一个可靠的委派程序，可能比任务表面上的规模更困难。其中一部分困难来自发现求解过程，另一部分则来自任务没有定义清楚，需要进一步澄清。</p>
+        <p>这两个例子把三种成本区分开来：理解任务、发现求解过程，以及执行这个过程。一个执行起来很昂贵的任务，可能很容易委派；一个只回答一次很便宜的问题，也可能很难转化为可靠的可复用程序。</p>
+        <p>这也限定了编译能够带来的收益。编译不会自动让本来就昂贵的计算变得便宜。它能够消除的是围绕这项计算反复进行的语言模型推理，前提是生成的程序满足准确率与资源预算要求。</p>
+
+        <h2><span class="no">二</span>解法存在，不意味着解法容易被发现</h2>
+        <p>这里有两种不同的能力边界。<strong>Existence（存在性）</strong>问的是：在允许的程序空间里，是否存在一个简洁、准确且高效的委派程序？<strong>Learnability（可学习性）</strong>问的是：根据现有任务描述与示例，一个较小的模型能否在可承受的合成预算内，找到或生成这样的程序？</p>
+        <p>一个很短的程序，可能凝结了非常难以发现的洞见。反过来，编译器也可能只需组合熟悉的组件，就能生成一个较长但足够好用的程序。因此，程序长度本身无法说明程序合成有多困难。</p>
+        <p>可学习性也取决于提供了什么证据。多个程序可能在全部示例上给出相同答案，却在下一个输入上产生分歧。如果任务规格无法区分它们，单纯增加搜索量，也无法确立哪一个才符合原意。任务描述的质量，应当成为实验设计的一部分。</p>
+        <p>因此，委派至少可能因两种原因失败：允许的程序空间中没有合适的解法，或者合成系统没有发现一个实际上存在的解法。评估应当尽量区分这两种情况。生成失败，并不能证明合适的程序不存在。</p>
+
+        <h2><span class="no">三</span>刻画可委派性的四个维度</h2>
+        <p>我倾向于沿着四个维度描述任务。每个维度都依赖于可用工具、表示方式与预算。</p>
+        <table>
+          <thead><tr><th scope="col">维度</th><th scope="col">要回答的问题</th></tr></thead>
+          <tbody>
+            <tr><td>可压缩性<br />Compressibility</td><td>任务要求的行为，能否被表达为简洁、可复用的程序？</td></tr>
+            <tr><td>可合成性<br />Synthesizability</td><td>能否根据任务规格和少量示例，生成这个程序？</td></tr>
+            <tr><td>可验证性<br />Verifiability</td><td>能否以可接受的成本确立程序的正确性，或估计它的错误率？</td></tr>
+            <tr><td>分布稳定性<br />Distribution stability</td><td>在预期的输入变化下，程序是否仍然有效？需要修改程序的变化能否被识别？</td></tr>
+          </tbody>
+        </table>
+        <p>前两个维度体现了解法存在与解法可被发现之间的区别。可压缩性只是存在性的一部分：简短的程序还必须满足执行效率与准确率要求。可验证性决定了我们有多大把握接受一个候选程序，稳定性则决定了为它付出的成本能够在多长时间内持续产生收益。</p>
+        <p>通过少量测试，只是关于这些测试的证据，并不构成一般性的正确性保证。有些任务允许精确检查器或形式化证明，另一些任务则需要在独立输入上进行统计评估。接受程序所依据的证据，其强度和适用范围应当随程序一起被记录。</p>
+        <p>稳定性也需要精确定义。规则不变时的新输入，可能由同一个程序覆盖；规则变化，则可能需要新的程序，除非原有程序已经把这些规则作为参数接收。不能把未经说明的语义变化，当成普通的输入泛化。</p>
+
+        <h2><span class="no">四</span>新颖性或许更能解释边界在哪里</h2>
+        <p><strong>Instance Novelty（实例新颖性）</strong>改变输入，但保留求解规则：另一张图、另一个列表，或者同一数据格式下的另一条记录。<strong>Task Novelty（任务新颖性）</strong>改变规则、抽象结构或求解方法：不同的目标、新的约束，或者此前没有的操作。</p>
+        <p>我的假设是，任务新颖性往往比单个实例的难度，更能解释委派为什么失败。只要适用条件成立，固定程序就可以处理许多从未见过的实例；而任务含义的一点变化，就可能让它立即失效。</p>
+        <p>不过，新颖性是相对于系统拥有的 <strong>abstraction library（抽象与算法组件库）</strong>而言的。一个原本需要发明算法的任务，在系统获得合适的求解器、解析器或可复用操作之后，可能变成常规工作。有通用求解器时，新约束可能只是另一个输入；没有时，它可能要求重新实现程序。</p>
+        <p>因此，能力边界应当随着组件库的完善而移动。研究这种移动，需要记录系统拥有哪些基本操作、见过哪些组合。否则，看起来像推理能力的提升，也可能来自补上了一个原先缺失的组件。两种进展都有价值，但它们回答的是不同的研究问题。</p>
+
+        <h2><span class="no">五</span>让模型学会生成委派程序</h2>
+        <p>我最看好的方向是 <strong>Learned Delegation（学习式委派）</strong>。先由强语言模型生成候选的 task–program pairs，即任务与程序配对；经过检查与筛选后，再用这些数据训练一个较小的 <em>neural compiler（神经编译器）</em>，让它把任务规格和示例映射为可执行的委派程序。</p>
+        <ol>
+          <li><strong>强语言模型：</strong>为一组任务提出算法与候选程序。</li>
+          <li><strong>验证环节：</strong>依据任务规格和独立样例检查候选，保留相应证据与局限。</li>
+          <li><strong>小型神经编译器：</strong>学习为新的任务描述合成程序。</li>
+          <li><strong>委派程序：</strong>通过验收之后，重复执行新的输入实例。</li>
+        </ol>
+        <p>这里存在两层摊销。第一层是 <strong>instance-level（实例层面）</strong>：用程序替代同一任务上的重复推理。第二层是 <strong>task-level（任务层面）</strong>：让学到的编译器复用跨任务发现程序的经验。如果第二层能够成立，就意味着一部分算法发现能力，可以被学习成调用成本更低的形式。</p>
+        <p>真正有挑战的检验，是编译器能否为新的任务结构生成程序。如果它只能处理改写后的描述或熟悉的模板，证明的能力就更有限。一个有说服力的评估，需要保留未见过的组合、规则体系和任务家族，并明确控制训练时可以接触什么。</p>
+        <p>实际系统可以在编译器生成合格候选时直接使用它，在合成或验证失败时再向强模型求助。这种回退也是系统成本与能力的一部分，应当被明确测量，而不能隐藏在委派程序的成功率里。</p>
+
+        <h2><span class="no">六</span>委派什么时候才划算？</h2>
+        <p>即使程序是正确的，对于只出现一次的任务，生成它也可能不是一笔合算的投入。一个简单的成本模型可以说明这项权衡。设 <code>G</code> 为生成并验证程序的成本，<code>E</code> 为每个实例的执行成本，<code>L</code> 为强模型直接处理每个实例的成本，<code>N</code> 为程序需要修改之前能够处理的实例数。</p>
+        <pre><code>直接推理的成本：N × L
+委派的成本：    G + N × E
+
+委派节省成本的条件：
+N × (L − E) &gt; G</code></pre>
+        <p>这些量必须使用可比较的单位，并且对应满足同一准确率要求的系统。如果执行比直接推理便宜，足够多的复用就可以收回前期投入。规则频繁变化，会缩短有效的复用窗口。验证、维护与回退调用，也可能让实际成本超过这个简化表达式。</p>
+        <p>对于学习式编译器，还需要把训练与数据生成成本分摊到它服务的任务上。部署时的程序合成成本更低，并不自动意味着总成本更低。当金钱成本、计算量与延迟会导向不同结论时，应当分别报告。</p>
+
+        <h2><span class="no">七</span>如何测量可委派性边界？</h2>
+        <p>一个具体的切入点，是建立具有已知参考程序的可控任务集。我们可以改变程序结构与执行成本、任务规格提供的信息量，以及任务相对于训练数据和抽象库的新颖程度。这些因素会互相影响，因此实验目标应当是在任务构造允许的范围内，尽量把它们分开。</p>
+        <p>程序长度或嵌套深度可以作为结构上的控制变量。程序合成难度还应通过特定合成器的搜索预算和成功率来测量，而不能假设它直接由程序长度决定。参考程序能够在所测试的条件下确立解法存在，从而单独研究为什么合成失败。</p>
+        <p>核心比较包括三条路径：</p>
+        <ul>
+          <li><strong>Strong LM direct：</strong>强模型对每个实例直接给出答案。</li>
+          <li><strong>LM-generated delegate：</strong>强模型先合成程序，再跨实例复用。</li>
+          <li><strong>Learned delegate：</strong>较小的神经编译器合成可复用程序。</li>
+        </ul>
+        <p>各系统应当获得相同的任务信息，并记录工具权限与资源预算。评估需要区分：已知任务的新实例、已知组件的新组合，以及需要未见规则或抽象的新任务。用于选择和修复程序的输入，必须与最终评估集分开。</p>
+        <p>除了准确率，还应报告生成与验证成本、执行成本、失败与回退比例，以及跨任务泛化能力。改变复用次数，可以看出每条路径从何时开始划算；比较不同抽象库，则可以观察有多少边界移动来自组件的改善。</p>
+        <p>最终得到的应当是在明确条件下的一组准确率与成本边界。反对假设的证据同样重要：如果新组合上的表现大幅下降，验证消耗了全部节省，或者系统仍然频繁依赖强模型回退，那么算法发现就只是在有限范围内得到了摊销。</p>
+
+        <h2><span class="no">八</span>强模型还需要做什么？</h2>
+        <p>这里的研究假设是：强语言模型的独特价值，可能越来越集中在发现新算法与新抽象上。一旦求解过程变得明确且可靠，其中大量重复执行就可以交给成本更低的计算工具。学习式编译器，则可能进一步接手其中一部分发现工作。</p>
+        <p>这个判断仍然有条件。有些任务难以形成简洁的可执行规格，有些任务变化太快，无法收回程序合成成本，还有些任务需要编译器尚未掌握的新抽象。强模型在这些场景中可能仍然有用，但它的参与也不会自动消除歧义或确立正确性。</p>
+        <div class="coda"><p>何时委派？当我们能够找到可复用的过程，为它在目标场景中的可靠性建立证据，并且预期的复用足以抵消全部成本时。更深的问题是：如果让系统学会自行发现这些过程，这片区域还能扩大多少？描绘这条边界，能够帮助我们看清强模型的推理仍然在哪里不可或缺，又在哪里可以沉淀为可复用的计算资产。</p></div>
+        <div class="disclosure"><p><b>写作说明</b>本文根据作者关于可委派性边界的研究笔记展开。文中的例子与实验设计用于阐述研究思路，不代表已经取得的基准测试结果。AI 参与了起草与中英文两个版本的准备。</p></div>
+
+      </div>
+    </article>
+
+    <nav class="post-nav">
+      <a href="../blog.html"><span lang="en">&larr; All posts</span><span lang="zh">&larr; 全部文章</span></a>
+      <a href="#top"><span lang="en">Back to top</span><span lang="zh">回到顶部</span></a>
+    </nav>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <span>&copy; 2026 Xinrun Wang</span>
+    <span>School of Computing and Information Systems, SMU</span>
+  </div>
+</footer>
+
+</body>
+</html>
