@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en" data-bilingual>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title data-t-zh="世界模型是一个窄门 · Xinrun Wang">World Models are Strait Gates · Xinrun Wang</title>
+<meta name="description" content="When AI capability becomes abundant, human verification becomes the constraint. World models can make action conditional on explicit, testable predictions." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" />
+<link rel="stylesheet" href="../assets/css/style.css?v=20261001b" />
+<script src="../assets/js/main.js?v=20261001b"></script>
+</head>
+<body id="top">
+
+<div class="masthead">
+  <div class="masthead__inner">
+    <a class="site-title" href="../index.html">Xinrun Wang</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../publications.html">Publications</a></li>
+      <li><a href="../ai4science.html">AI4Science</a></li>
+      <li><a href="../blog.html" class="is-active">Not Intelligent</a></li>
+      <li><a href="../lab.html">DIGA@SMU</a></li>
+      <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span id="theme-icon">☾</span></button></li>
+    </ul>
+  </div>
+</div>
+
+<div class="layout layout--reading">
+  <main class="content">
+
+    <div class="lang-switch" role="group" aria-label="Language / 语言">
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-set-lang="zh" aria-pressed="false">中文</button>
+    </div>
+
+    <article>
+      <header class="post-header">
+        <span class="date" lang="en">Nov 4, 2026</span>
+        <span class="date" lang="zh">2026年11月4日</span>
+        <h1 lang="en">World Models are Strait Gates</h1>
+        <h1 lang="zh">世界模型是一个窄门</h1>
+        <ul class="tags"><li class="tag">world models</li><li class="tag">agents</li><li class="tag">verification</li></ul>
+      </header>
+
+      <!-- ============================ English ============================ -->
+      <div class="post-body" lang="en">
+
+        <p>As AI grows more powerful, what else should we ask of it?</p>
+
+        <p>The most immediate answer is better results: higher accuracy, stronger reasoning, and the ability to carry out longer tasks. We have become accustomed to moving in this direction, as though every remaining problem will gradually disappear if capability keeps increasing.</p>
+
+        <p>But I want to consider another possibility. As AI capability becomes abundant, we should place more of our demands on how that capability is delivered.</p>
+
+        <p>AI needs to produce solutions that people can understand, verify, and reject in time when something goes wrong.</p>
+
+        <p>This means AI must accommodate the limits of human understanding.</p>
+
+        <p>That may sound like a concession. If a machine can already find a better approach, why should we require it to pass through the limits of human cognition?</p>
+
+        <p>Because its results ultimately enter the human world. We need to decide whether to execute a plan, whether to continue granting authority, and whether to stop when a step deviates from expectations. Even a plan that turns out to be right may be unacceptable if we can only discover that it was right after everything is over.</p>
+
+        <p><strong>Capability can be vast, while the gate through which we accept it can be strait.</strong></p>
+
+        <p>This is the perspective from which I want to think about world models.</p>
+
+        <p>We can require an AI to output both an action and its prediction of the next state:</p>
+
+        <blockquote>
+          <p>What am I about to do?</p>
+          <p>How should the world change after I do it?</p>
+          <p>What observations will let us determine whether that change actually occurred?</p>
+        </blockquote>
+
+        <p>This gives us a concrete way to check whether a policy deserves to keep running. We do not need to understand all of its internal reasoning at once. Instead, we can check, step by step, whether the things it expected to happen actually happened.</p>
+
+        <p>Suppose an AI is modifying a program. Its output can include the code and explicit predictions about what will happen when it runs: which tests should pass, which errors should disappear, and which existing behaviors should remain unchanged.</p>
+
+        <p>If it is operating a system, it should also specify which objects will enter which states after the next step, which fields will change, and which resources should remain untouched.</p>
+
+        <p>Then we execute, observe, and compare.</p>
+
+        <p>A step passes only if the observed state falls within bounds agreed upon in advance. Only then does the system earn permission to proceed. Otherwise, it should pause and reassess. Where reversal is permitted and possible, it can also undo the step.</p>
+
+        <p>The prediction must come before the action. An explanation offered afterward can too easily become a justification for whatever has already happened. A prediction made in advance is a commitment: the model must expose what it believes will happen, and we can identify precisely where it was wrong.</p>
+
+        <p>This is what I mean by a strait gate.</p>
+
+        <p>An AI may use extraordinarily complex strategies internally and explore paths that humans could never exhaust. But when that capability becomes action in the world, it must pass through a strict interface: explicit states, explicit predictions, explicit methods of observation, and explicit acceptance criteria.</p>
+
+        <p>A world model thus takes on the role of a constraint. We require the model to express its understanding of how the world changes as expectations that can be checked.</p>
+
+        <p>Of course, simply asking it to “predict the next state” is not enough.</p>
+
+        <p>If that state is a high-dimensional representation that people cannot understand and external observers cannot measure, we have merely moved the verification problem elsewhere. If a prediction is so vague that any outcome can count as a match, it imposes no meaningful constraint.</p>
+
+        <p>The gate itself therefore needs to be designed. Which states must be made explicit? Which changes must be observed? How much deviation is acceptable? Which conditions, if violated, require an immediate stop?</p>
+
+        <p>If the gate is too wide, prediction is decoration. If it is too restrictive, the system may be unable to carry out even valuable actions.</p>
+
+        <p>Reality may also resist exact prediction. Some actions permit only a range of outcomes, a probability distribution, or invariants that must be preserved. What matters is agreeing on what counts as meeting expectations before execution, rather than revising the standard after seeing the result.</p>
+
+        <p>More fundamentally, an accurate prediction does not make an action worth taking. A model could accurately predict the consequences of a harmful action. Passing through the gate therefore requires both that the consequences match the prediction and that the predicted consequences satisfy goals and boundaries we have set in advance.</p>
+
+        <p>A world model will not automatically choose those boundaries for us. But it can force the model to expose its actions and their consequences to scrutiny against them.</p>
+
+        <p>I think this is a direction worth pursuing as AI capability becomes abundant.</p>
+
+        <p>In the past, we were willing to spend a great deal to make machines solve a few more problems. In the future, we may also be willing to spend substantial machine capability finding solutions that are easier for people to check: smaller steps, clearer state changes, errors that surface earlier, and actions that are easier to reverse.</p>
+
+        <p>Even when those solutions are not the most direct or fastest paths available to the model.</p>
+
+        <p>Machine capability can keep growing. Human attention, understanding, and capacity to bear the cost of errors all have limits.</p>
+
+        <p><strong>We can ask powerful AI to spend more of its capability making every action easier to verify.</strong></p>
+
+        <p>A world model is the strait gate I have in mind.</p>
+
+      </div>
+
+      <!-- ============================= 中文 ============================== -->
+      <div class="post-body" lang="zh">
+
+        <p>当 AI 变得越来越强，我们还应该要求它什么？</p>
+
+        <p>最直接的答案是：更好的结果。更高的准确率，更强的推理能力，更长的任务执行时间。我们已经习惯沿着这条路前进，仿佛只要能力继续增长，剩下的问题都会逐渐消失。</p>
+
+        <p>但我想讨论另一种可能：当 AI 的能力开始过剩时，我们应该把越来越多的要求放在它交付能力的方式上。</p>
+
+        <p>它需要给出一种人能够理解、能够验证，也能够在出错时及时拒绝的 solution。</p>
+
+        <p>这意味着，AI 必须迁就人的理解能力。</p>
+
+        <p>这听起来像是一种退让。既然机器已经能够找到更好的办法，为什么还要让它通过人类有限的认知？</p>
+
+        <p>因为结果最终要进入人的世界。我们需要决定是否执行一个方案，是否继续授权，以及在某一步出现偏差时是否停下来。一个方案即使最终是对的，如果我们只能在一切结束之后才知道它是对的，它也未必是一种我们愿意接受的方案。</p>
+
+        <p><strong>能力可以很宽，接受能力的门却可以很窄。</strong></p>
+
+        <p>我想从这个角度理解世界模型。</p>
+
+        <p>我们可以要求 AI 在输出 action 的同时，输出它预测的下一个 state：</p>
+
+        <blockquote>
+          <p>我准备做什么？</p>
+          <p>做完之后，世界应该发生什么变化？</p>
+          <p>我们通过什么观察，判断这个变化确实发生了？</p>
+        </blockquote>
+
+        <p>于是，一个 policy 是否值得继续执行，就有了一个具体的检验入口。我们不必一次性理解它全部的内部推理，而是逐步检查：它预期发生的事情，有没有发生？</p>
+
+        <p>假设 AI 要修改一段程序。它交付的可以不只是一份代码，还包括对执行结果的明确预期：哪个测试应该通过，哪个错误应该消失，哪些已有行为应该保持不变。</p>
+
+        <p>如果它在操作一个系统，它也应该说明：这一步之后，哪个对象会进入什么状态，哪些字段会改变，哪些资源不应该被触碰。</p>
+
+        <p>然后，我们执行、观察、比较。</p>
+
+        <p>只有实际状态落在预先约定的范围内，这一步才算通过，后续行动才获得继续执行的资格。否则，系统应当暂停，重新判断；在允许且能够回退的场景中，也可以撤销这一步。</p>
+
+        <p>这里，预测必须发生在行动之前。行动之后再提供解释，很容易变成替已经发生的事情寻找理由。提前给出的预测则是一项承诺：模型需要明确暴露自己认为什么会发生，也让我们能够明确指出它错在哪里。</p>
+
+        <p>这就是我说的“窄门”。</p>
+
+        <p>AI 内部可以拥有非常复杂的策略，可以探索人类难以穷尽的路径。但当这些能力要转化为实际行动时，它必须通过一个严格的接口：明确的状态、明确的预测、明确的观测方式，以及明确的接受条件。</p>
+
+        <p>世界模型由此承担一种约束作用。我们要求模型把对世界如何变化的理解，落实成可以被检查的预期。</p>
+
+        <p>当然，仅仅要求“预测下一个 state”还不够。</p>
+
+        <p>如果这个 state 是一个人看不懂、外部也无法测量的高维表示，我们只是把验证的困难换了一个位置。如果预测含糊到任何结果都能算作符合预期，它也没有提供真正的约束。</p>
+
+        <p>因此，这道门本身需要设计。哪些状态必须显式表达？哪些变化必须被观测？允许多大的偏差？哪些条件一旦被破坏，就必须停止？</p>
+
+        <p>门太宽，预测只是装饰。门太窄，系统可能连有价值的行动都无法完成。</p>
+
+        <p>现实也未必允许精确预测。有些行动只能给出结果范围、概率分布，或者必须保持的不变量。我们真正需要的，是在执行之前就约定好怎样才算符合预期，而不是等看到结果之后再修改标准。</p>
+
+        <p>更重要的是，预测准确并不意味着行动值得执行。一个模型完全可能准确地预测一项有害行动的后果。因此，通过这道门，既要求后果符合预测，也要求预测中的后果满足我们事先设定的目标和边界。</p>
+
+        <p>世界模型不会自动替我们决定这些边界。但它可以迫使模型把自己的行动及其后果，放到这些边界面前接受检验。</p>
+
+        <p>我觉得，这可能是 AI 能力充裕之后，一个值得追求的方向。</p>
+
+        <p>过去，我们愿意付出很大代价，让机器多解决一点问题。以后，我们也许会愿意消耗大量机器能力，让它找到一种更容易被人检查的解法：更小的步骤，更清楚的状态变化，更早暴露的错误，以及更容易撤回的行动。</p>
+
+        <p>即使这些解法并不是模型眼中最直接、最快捷的路径。</p>
+
+        <p>因为机器的能力可以继续增长，人的注意力、理解能力和承担错误的空间却都有边界。</p>
+
+        <p><strong>我们可以要求强大的 AI 花费更多能力，让每一步行动都更容易被验证。</strong></p>
+
+        <p>世界模型，就是我想象中的那道窄门。</p>
+
+      </div>
+    </article>
+
+    <nav class="post-nav">
+      <a href="../blog.html"><span lang="en">&larr; All posts</span><span lang="zh">&larr; 全部文章</span></a>
+      <a href="#top"><span lang="en">Back to top</span><span lang="zh">回到顶部</span></a>
+    </nav>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <span>&copy; 2026 Xinrun Wang</span>
+    <span>School of Computing and Information Systems, SMU</span>
+  </div>
+</footer>
+
+</body>
+</html>
